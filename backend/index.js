@@ -1,11 +1,13 @@
 const {createServer} = require("http");
 const {join} = require("path");
-const express = require("express");
+
+const express, {static} = require("express");
 const {MongoClient} = require("mongodb");
 const {Server} = require("socket.io");
+
 const settings = require("./settings");
 const requests = require("./requests");
-// const {Eos, IO, Mongo} = require("./services/index.js");
+const {IO, Mongo} = require("./services");
 
 const init = async () => {
   const {
@@ -30,21 +32,21 @@ const init = async () => {
   //   else
   //     next()
   // })
+  // =============================================
 
-  app.use(express.static(join(__dirname, "dist")))
-  app.get("/", (req, res) => res.sendFile(`${__dirname}/dist/index.html`))
-  app.get("*", (req, res) => res.sendFile(`${__dirname}/dist/index.html`))
+  app.use(static(join(__dirname, "frontend")));
+  app.get("/", (req, res) => res.sendFile(`${__dirname}/frontend/index.html`));
+  app.get("*", (req, res) => res.sendFile(`${__dirname}/frontend/index.html`));
 
   socketioServer.on("connection", (socket) => {
-    // const eos = new Eos(api, socket);
-    // const io = new IO(socketioServer, socket);
-    // const mongo = new Mongo(mongoDb, socket);
-    // const app: App = {eos, io, mongo};
+    const io = new IO(socketioServer, socket);
+    const mongo = new Mongo(mongoDb, socket);
+    const app = {io, mongo};
 
     requestKeys.forEach((request) => {
-      io.on(request, (params = {}) => {
+      socket.on(request, (params = {}) => {
         requests[request](app, params);
-      })
+      });
     });
   });
 
