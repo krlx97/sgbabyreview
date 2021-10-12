@@ -1,13 +1,15 @@
 const {createServer} = require("http");
 const {join} = require("path");
 
+const bcrypt = require("bcrypt");
 const express, {static} = require("express");
+const jwt = require("jsonwebtoken");
 const {MongoClient} = require("mongodb");
 const {Server} = require("socket.io");
 
 const settings = require("./settings");
 const requests = require("./requests");
-const {IO, Mongo} = require("./services");
+const {Crypto, IO, Mongo} = require("./services");
 
 const init = async () => {
   const {
@@ -39,9 +41,10 @@ const init = async () => {
   app.get("*", (req, res) => res.sendFile(`${__dirname}/frontend/index.html`));
 
   socketioServer.on("connection", (socket) => {
+    const crypto = new Crypto(bcrypt, jwt);
     const io = new IO(socketioServer, socket);
     const mongo = new Mongo(mongoDb, socket);
-    const app = {io, mongo};
+    const app = {crypto, io, mongo};
 
     requestKeys.forEach((request) => {
       socket.on(request, (params = {}) => {
