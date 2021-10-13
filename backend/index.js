@@ -2,7 +2,7 @@ const {createServer} = require("http");
 const {join} = require("path");
 
 const bcrypt = require("bcrypt");
-const express, {static} = require("express");
+const express = require("express");
 const jwt = require("jsonwebtoken");
 const {MongoClient} = require("mongodb");
 const {Server} = require("socket.io");
@@ -36,7 +36,7 @@ const init = async () => {
   // })
   // =============================================
 
-  app.use(static(join(__dirname, "frontend")));
+  app.use(express.static(join(__dirname, "frontend")));
   app.get("/", (req, res) => res.sendFile(`${__dirname}/frontend/index.html`));
   app.get("*", (req, res) => res.sendFile(`${__dirname}/frontend/index.html`));
 

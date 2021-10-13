@@ -1,0 +1,11 @@
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+button, input {
+  width: 256px;
+  padding: 0.5em 1em;
+  font-size: 16px;
+  box-sizing: border-box;
+}

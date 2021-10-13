@@ -10,7 +10,7 @@ const settings = {
     }
   },
   server: {
-    port: process.env.PORT || 4200
+    port: process.env.PORT || 4100
   }
 };
 
