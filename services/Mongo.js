@@ -44,6 +44,23 @@ class Mongo {
     return documents ? documents : undefined;
   }
 
+  async insertReview (subcategory, productId, username, stars, title, content, timeOfPosting) {
+    let update;
+    const _id = new ObjectId(productId);
+
+    try {
+      update = await this.#db.collection(subcategory).updateOne({_id}, {
+        $push: {
+          reviews: {username, stars, title, content, timeOfPosting}
+        }
+      });
+    } catch (error) {
+      this.#handleError(error);
+    }
+
+    return update.modifiedCount > 0 ? true : false;
+  }
+
   async findUser (query) {
     let document;
 

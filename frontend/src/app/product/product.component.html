@@ -23,16 +23,18 @@
   <hr>
 
   <div *ngIf="product.reviews.length; else noReviews">
-    <div *ngFor="let review of product.reviews">
-      <img src="http://localhost:4100/assets/avatars/{{review.username}}.jpg" height="64" width="64">
-      <p>{{review.username}}</p>
-      <p>{{review.timeOfPosting}}</p>
-      <p>{{review.stars}} ✨</p>
-      <p>{{review.title}}</p>
-      <p>{{review.content}}</p>
-      <button>❤ {{review.likes}}</button>
-      <button>Share</button>
-      <button>Report</button>
+    <div class="review" *ngFor="let review of product.reviews">
+      <img class="review__img" src="http://localhost:4100/assets/avatars/{{review.username}}.jpg">
+      <div>
+        <button>❤ {{review.likes}}</button>
+        <button>Share</button>
+        <button>Report</button>
+        <p>{{review.username}}</p>
+        <p>{{review.timeOfPosting | date: 'mediumDate'}}</p>
+        <p>{{review.stars}} ✨</p>
+        <p>{{review.title}}</p>
+        <p>{{review.content}}</p>
+      </div>
     </div>
   </div>
   <ng-template #noReviews>
@@ -40,6 +42,27 @@
       There are no reviews yet.
     </p>
   </ng-template>
+
+  <h1>Write a review:</h1>
+  <div *ngIf="userService.user; else loginToPostReview">
+    <form [formGroup]="writeReviewForm" (ngSubmit)="onReviewSubmit()">
+      <p>STARS</p>
+      <select formControlName="stars">
+        <option *ngFor="let star of stars" [value]="star">{{star}}</option>
+      </select>
+
+      <input placeholder="Title" formControlName="title">
+
+      <textarea formControlName="content"></textarea>
+
+      <button type="submit">SUBMIT</button>
+    </form>
+  </div>
+  <ng-template #loginToPostReview>
+    You need to be logged in to post a review.
+  </ng-template>
+
+  <hr>
 
   <h1>Q & A</h1>
   <div *ngIf="product.qna.length; else noQuestions">
