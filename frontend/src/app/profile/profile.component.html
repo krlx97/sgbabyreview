@@ -1,0 +1,46 @@
+<div *ngIf="user.isLoggedIn; else isntLoggedIn">
+  <h1>My activities</h1>
+  <p>You have no activities...</p>
+  
+  <h1>My reviews</h1>
+  <p>You have no reviews...</p>
+
+
+  <h1>My questions</h1>
+  <p>You have no questions...</p>
+
+  <h2>{{user.user.firstName}} {{user.user.lastName}} ({{user.user.username}})</h2>
+  <img src="http://localhost:4100/assets/avatars/{{user.user.username}}.jpg">
+
+  <h1>SET AVATAR</h1>
+  <form [formGroup]="avatarForm" (ngSubmit)="onSubmitAvatarForm()">
+    <input type="file" placeholder="Avatar" formControlName="avatar" id="avatarInput">
+  </form>
+
+  <h1>CHANGE EMAIL</h1>
+  <form [formGroup]="changeEmailForm" (ngSubmit)="onChangeEmail()">
+
+    <input placeholder="Email" formControlName="newEmail">
+    <input type="password" placeholder="Current password" formControlName="password">
+    <button type="submit">CHANGE</button>
+
+  </form>
+
+  <h1>CHANGE PASSWORD</h1>
+  <form [formGroup]="changePasswordForm" (ngSubmit)="onChangePassword()">
+
+    <input type="password" placeholder="New password" formControlName="newPassword">
+    <input type="password" placeholder="Repeat new password" formControlName="repeatNewPassword">
+    <input type="password" placeholder="Current password" formControlName="password">
+    <button type="submit">CHANGE</button>
+
+  </form>
+
+  <hr>
+
+  <button (click)="onLogout()">LOGOUT</button>
+</div>
+
+<ng-template #isntLoggedIn>
+  You must be logged in to view your profile.
+</ng-template>

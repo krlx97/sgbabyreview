@@ -1,0 +1,61 @@
+<div *ngIf="product; else fetching">
+  <img class="product__img" src="assets/{{product._id}}.png">
+  <h2>{{product.title}}</h2>
+  <p><i>{{product.category}}</i></p>
+
+  <div class="stars">
+    <span *ngFor="let i of [0,1,2,3,4,5]">✨</span> {{averageStars}}
+  </div>
+
+  <p>{{product.content}}</p>
+  <button>Write review</button>
+
+  <h1>Review snapshot</h1>
+  <hr>
+
+  <p>5 Stars: {{product.stars.five}}</p>
+  <p>4 Stars: {{product.stars.four}}</p>
+  <p>3 Stars: {{product.stars.three}}</p>
+  <p>2 Stars: {{product.stars.two}}</p>
+  <p>1 Stars: {{product.stars.one}}</p>
+
+  <h1>Reviews</h1>
+  <hr>
+
+  <div *ngIf="product.reviews.length; else noReviews">
+    <div *ngFor="let review of product.reviews">
+      <img src="http://localhost:4100/assets/avatars/{{review.username}}.jpg" height="64" width="64">
+      <p>{{review.username}}</p>
+      <p>{{review.timeOfPosting}}</p>
+      <p>{{review.stars}} ✨</p>
+      <p>{{review.title}}</p>
+      <p>{{review.content}}</p>
+      <button>❤ {{review.likes}}</button>
+      <button>Share</button>
+      <button>Report</button>
+    </div>
+  </div>
+  <ng-template #noReviews>
+    <p>
+      There are no reviews yet.
+    </p>
+  </ng-template>
+
+  <h1>Q & A</h1>
+  <div *ngIf="product.qna.length; else noQuestions">
+    <div *ngFor="let question of product.qna">
+    </div>
+  </div>
+  <ng-template #noQuestions>
+    <p>
+      There are no questions yet. Be the first to ask a question about this product.
+    </p>
+  </ng-template>
+
+  <h1>Details</h1>
+  <p>Visit the <a [href]="product.details.url">official site</a></p>
+</div>
+
+<ng-template #fetching>
+  Loading...
+</ng-template>
