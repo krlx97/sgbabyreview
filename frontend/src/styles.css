@@ -1,2 +1,29 @@
+:root {
+  --border-radius: 48px;
+
+  --spacing-sm: 0.7em;
+  --spacing-md: 0.8em;
+  --spacing-lg: 1em;
+  --spacing-xlg: 1.3em;
+
+  --cyan: #80CBC4;
+}
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+  margin: 0;
+  font-family: "Nunito";
+}
+
+button {
+  /* outline: none; */
+  border: none;
+}
+
+.btn--fill {
+  background: #80CBC4;
+  border-radius: 48px;
+  color:white;
+  padding: 1em 2em;
+}

@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {IoService} from "../io.service";
-import {UserService} from "../user.service";
+import {IoService} from "../services/io/io.service";
+import {UserService} from "../services/user/user.service";
+import { LoginParams } from "./login.models";
 
 @Component({
   selector: "app-login-form",
@@ -10,11 +11,6 @@ import {UserService} from "../user.service";
   styleUrls: ["./login-form.component.css"]
 })
 export class LoginFormComponent implements OnInit, OnDestroy {
-  readonly loginForm = this._fb.group({
-    email: ["", [Validators.required, Validators.email]],
-    password: ["", [Validators.required]]
-  });
-
   constructor (
     private readonly _fb: FormBuilder,
     private readonly _router: Router,
@@ -22,23 +18,51 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     private readonly _userService: UserService
   ) {}
 
-  onSubmit (): void {
-    this._ioService.emit("login", this.loginForm.value);
+  public readonly form = this._fb.group({
+    email: ["", [Validators.required, Validators.email]],
+    password: ["", [Validators.required, Validators.minLength(6)]]
+  });
+
+  public get email(): FormControl {
+    return this.form.get("email") as FormControl;
+  }
+  public get password(): FormControl {
+    return this.form.get("password") as FormControl;
+  }
+
+  public isEmptyFormField (field: FormControl): boolean {
+    return !field.value && field.touched;
+  }
+  public isLength (field: FormControl, length: number): boolean {
+    return field.value && field.value < length && field.touched;
+  }
+
+  public get isEmailInvalid(): boolean {
+    return !this.email.valid && this.email.value && this.email.touched;
+  }
+  public get isEmailEmpty(): boolean {
+    return !this.email.value && this.email.touched;
+  }
+
+  public onSubmit (): void {
+    this._ioService.emit("login", this.form.value);
   }
 
   onSubmitAvatarForm (): void {
 
   }
 
-  ngOnInit (): void {
-    this._ioService.on("login", (params) => {
-      this._userService.isLoggedIn = true;
-      this._userService.user = params;
-      this._router.navigate(["/home"]);
+  public ngOnInit (): void {
+    const {_router, _ioService, _userService} = this;
+
+    _ioService.on("login", (params: LoginParams) => {
+      _userService.isLoggedIn = true;
+      _userService.user = params.user;
+      _router.navigate(["/home"]);
     });
   }
 
-  ngOnDestroy (): void {
+  public ngOnDestroy (): void {
     this._ioService.off("login");
   }
 }

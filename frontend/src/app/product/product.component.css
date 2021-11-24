@@ -1,17 +1,137 @@
-img {
-  height: 256px;
-  width: 256px;
+.product {
+  width: 100%;
+}
+.meter {
+  margin: 0 0.7em;
+  height: 16px;
+  flex-grow: 1;
+  background:white;
+  border-radius: var(--border-radius);
+
+}
+.meter__progress {
+  width: 60%;
+  height: 16px;
+  border-radius: var(--border-radius);
+  background: var(--cyan);
 }
 
-.review {
+.hero {
+  position: relative;
+  padding: 1em;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--cyan);
+  border-bottom-right-radius: 64px;
+  /* color: white; */
+}
+.hero__img {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.product__content {
   padding: 1em;
   box-sizing: border-box;
-  border: 1px solid green;
 }
+
+.stars {
+  margin: 1em 0;
+  display: flex;
+  align-items: center;
+}
+.product__img {
+  width: 80%;
+  height: auto;
+}
+
+.hero .searchbar {
+  padding: 10px 15px;
+  background: #F6F6F6;
+  border-radius: 50px;
+  opacity: 0.3;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.ratings {
+  padding: 0.7em 0.7em 0 0.7em;
+  box-sizing: border-box;
+}
+.barss {
+  margin-bottom: 0.7em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.where-to-buy {
+  width:128px;
+  background:#80CBC4;
+  border-radius: 48px;
+  color:white;
+  padding:13px 0;
+}
+
 
 .review__img {
   height: 64px;
   width: 64px;
-  margin-right: 1em;
+}
+
+.review {
+  display:flex;
+  flex-direction: column;
+  padding: 1em;
+  /* background-color: #F6F6F6; */
+}
+
+.user-info {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.username-date {
+  margin-left:10px;
+  
+}
+
+.username-date p {
+  font-size:14px;
+}
+
+.username-date p:last-child {
+  font-style: italic;
+  font-weight: 300;
+  margin-top:2px;
+}
+
+
+.opis {
+    margin-top:17px;
+}
+
+.zvezdice {
+    margin-top:17px;
+    display:flex;
+    flex-direction: row;
+}
+
+.zvezdice i {
+    margin-left:10px;
+}
+
+.opis p {
+    font-size:14px;
+    line-height: 28px;
+    color:#252525;
 }

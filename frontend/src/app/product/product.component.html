@@ -1,49 +1,135 @@
-<div *ngIf="product; else fetching">
-  <img class="product__img" src="assets/{{product._id}}.png">
-  <h2>{{product.title}}</h2>
-  <p><i>{{product.category}}</i></p>
 
-  <div class="stars">
-    <span *ngFor="let i of [0,1,2,3,4,5]">✨</span> {{averageStars}}
+
+<div *ngIf="product; else fetching">
+  <div class="hero">
+    <img class="product__img" src="assets/{{product._id}}.png">
   </div>
 
-  <p>{{product.content}}</p>
-  <button>Write review</button>
+  <div class="product__content">
+    <h2>{{product.title}}</h2>
+  
+    <!-- <a routerLink="../{{product.category.url}}"><i>{{product.category.title}}</i></a> -->
+  
+    <div class="stars">
+      <span *ngFor="let i of [0,1,2,3,4]"><img src="assets/star.png"></span> {{averageStars}} / based on {{product.reviews.length}} reviews.
+    </div>
+  
+    <p>{{product.content}}</p>
+  
+    <a [href]="product.details.url">
+     <button class="btn--fill">WHERE TO BUY</button>
+    </a>
+  </div>
+
+
+  <mat-tab-group>
+
+    <mat-tab label="Reviews ({{product.reviews.length}})">
+      <div *ngIf="product.reviews.length; else noReviews">
+        <div class="ratings">
+          <div class="barss">
+            5 Stars
+            <div class="meter mat-elevation-z1">
+              <div class="meter__progress"></div>
+            </div>
+            {{product.stars[4]}}
+          </div>
+          <div class="barss">
+            4 Stars
+            <div class="meter mat-elevation-z1">
+              <div class="meter__progress"></div>
+            </div>
+            {{product.stars[3]}}
+          </div>
+          <div class="barss">
+            3 Stars
+            <div class="meter mat-elevation-z1">
+              <div class="meter__progress"></div>
+            </div>
+            {{product.stars[2]}}
+          </div>
+          <div class="barss">
+            2 Stars
+            <div class="meter mat-elevation-z1">
+              <div class="meter__progress"></div>
+            </div>
+            {{product.stars[1]}}
+          </div>
+          <div class="barss">
+            1 Stars
+            <div class="meter mat-elevation-z1">
+              <div class="meter__progress"></div>
+            </div>
+            {{product.stars[0]}}
+          </div>
+        </div>
+
+        <app-review *ngFor="let review of product.reviews" [review]="review"></app-review>
+        <!-- <div class="review" *ngFor="let review of product.reviews">
+          <div class="user-info">
+              <img class="review__img" src="http://localhost:4100/assets/avatars/{{review.username}}.jpg">
+              <div class="username-date">
+                <h3>{{review.username}}</h3>
+                <p>{{review.posted | date: 'mediumDate'}}</p>
+                 <button>❤ {{review.likes.length}}</button>
+                
+              </div>
+          </div>
+      
+          <div class="zvezdice">
+            <i class="far fa-heart"></i>
+            <i class="far fa-heart"></i>
+            <i class="far fa-heart"></i>
+            <i class="far fa-heart"></i>
+            <i class="far fa-heart"></i>
+            {{review.stars}}
+          </div>
+      
+          <div class="opis">
+            <p>{{review.title}}</p>
+            <p>{{review.content}}</p>
+          </div>
+        </div> -->
+      </div>
+
+      <ng-template #noReviews>
+        <p>There are no reviews yet.</p>
+      </ng-template>
+    </mat-tab>
+
+    <mat-tab label="Q&A">
+      <div *ngIf="product.qna.length; else noQuestions">
+        <div *ngFor="let question of product.qna">
+        </div>
+      </div>
+      <ng-template #noQuestions>
+        <p>
+          There are no questions yet.
+        </p>
+      </ng-template>
+    </mat-tab>
+
+    <mat-tab label="Details">
+      details tab
+    </mat-tab>
+  </mat-tab-group>
+
+  <!-- <button>Write review</button>
 
   <h1>Review snapshot</h1>
   <hr>
 
-  <p>5 Stars: {{product.stars.five}}</p>
-  <p>4 Stars: {{product.stars.four}}</p>
-  <p>3 Stars: {{product.stars.three}}</p>
-  <p>2 Stars: {{product.stars.two}}</p>
-  <p>1 Stars: {{product.stars.one}}</p>
+  
+  <h1>
+    Reviews
+  </h1>
 
-  <h1>Reviews</h1>
   <hr>
 
-  <div *ngIf="product.reviews.length; else noReviews">
-    <div class="review" *ngFor="let review of product.reviews">
-      <img class="review__img" src="http://localhost:4100/assets/avatars/{{review.username}}.jpg">
-      <div>
-        <button>❤ {{review.likes}}</button>
-        <button>Share</button>
-        <button>Report</button>
-        <p>{{review.username}}</p>
-        <p>{{review.timeOfPosting | date: 'mediumDate'}}</p>
-        <p>{{review.stars}} ✨</p>
-        <p>{{review.title}}</p>
-        <p>{{review.content}}</p>
-      </div>
-    </div>
-  </div>
-  <ng-template #noReviews>
-    <p>
-      There are no reviews yet.
-    </p>
-  </ng-template>
+  
 
   <h1>Write a review:</h1>
+
   <div *ngIf="userService.user; else loginToPostReview">
     <form [formGroup]="writeReviewForm" (ngSubmit)="onReviewSubmit()">
       <p>STARS</p>
@@ -58,25 +144,25 @@
       <button type="submit">SUBMIT</button>
     </form>
   </div>
+
   <ng-template #loginToPostReview>
-    You need to be logged in to post a review.
+    <p>You need to be logged in to post a review.</p>
   </ng-template>
 
   <hr>
 
   <h1>Q & A</h1>
-  <div *ngIf="product.qna.length; else noQuestions">
-    <div *ngFor="let question of product.qna">
-    </div>
-  </div>
-  <ng-template #noQuestions>
-    <p>
-      There are no questions yet. Be the first to ask a question about this product.
-    </p>
-  </ng-template>
+  
 
-  <h1>Details</h1>
-  <p>Visit the <a [href]="product.details.url">official site</a></p>
+  <h1>Write a question:</h1>
+  <div *ngIf="userService.user; else loginToPostQuestion">
+    <form>
+      <button type="submit">SUBMIT</button>
+    </form>
+  </div>
+  <ng-template #loginToPostQuestion>
+    You need to be logged in to post a question.
+  </ng-template> -->
 </div>
 
 <ng-template #fetching>

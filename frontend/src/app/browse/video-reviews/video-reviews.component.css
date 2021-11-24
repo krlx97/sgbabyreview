@@ -1,0 +1,51 @@
+.video-reviews {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.video-reviews h1 {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  padding-left: 20px;
+}
+
+.video-reviews .container {
+  padding-top: 20px;
+}
+
+.video-reviews .container .review:not(:first-child):not(:last-child) {
+  margin: 20px 0;
+}
+
+.video-reviews .container .review {
+  background: #545556;
+  width: 325px;
+  height: 176px;
+  border-radius: 20px;
+  display: Flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 15px;
+  background: url("/assets/Choosing-the-right-baby-bathtub-for-a-safe-bath-time-1170x628 3.png");
+  background-size: cover;
+}
+
+.video-reviews .container .review p {
+  color: white;
+}

@@ -1,0 +1,10 @@
+header {
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: row;
+  background: #80cbc4;
+}
+
+img {
+  /* width: 64px; */
+}

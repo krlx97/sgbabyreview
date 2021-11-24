@@ -1,0 +1,25 @@
+.wrapper {
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+.categories {
+  display: flex;
+  overflow-x: auto;
+}
+.categories::-webkit-scrollbar {
+  display: none;
+}
+
+.category {
+  padding: 0.5em 2em;
+  flex: 0 0 auto;
+  border-radius: 48px;
+  box-sizing: border-box;
+  color: black;
+  text-decoration: none;
+}
+
+.category:first-child {
+  border: 1px solid #80cbc4;
+}

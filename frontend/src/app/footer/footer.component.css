@@ -1,0 +1,22 @@
+footer {
+  padding: 1em 0 128px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #212121;
+}
+
+footer div:not(:first-child):not(:last-child) {
+  margin: 20px 0;
+}
+
+footer div {
+  display: flex;
+  flex-direction: column;
+}
+
+footer div a, footer div p {
+  color: white;
+  text-align: center;
+}

@@ -1,0 +1,32 @@
+.menu {
+  margin: 1em;
+  padding: 1em 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+  border-radius: var(--border-radius);
+  /* border: 2px solid red; */
+  box-sizing: border-box;
+}
+
+.plus {
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  /* height: 48px;
+  width: 48px; */
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--cyan);
+  border-radius: 12px;
+  /* border: 2px solid yellow; */
+  box-sizing: border-box;
+
+  transform: rotate(-45deg) translate(-50%, 50%);
+  transform-origin: bottom left;
+}
+
+.plus-icon { transform: rotate(45deg); }

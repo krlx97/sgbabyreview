@@ -1,0 +1,53 @@
+.review__img {
+  height: 64px;
+  width: 64px;
+}
+
+.review {
+  display:flex;
+  flex-direction: column;
+  padding: 1em;
+  /* background-color: #F6F6F6; */
+}
+
+.user-info {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.username-date {
+  margin-left:10px;
+  
+}
+
+.username-date p {
+  font-size:14px;
+}
+
+.username-date p:last-child {
+  font-style: italic;
+  font-weight: 300;
+  margin-top:2px;
+}
+
+
+.opis {
+    margin-top:17px;
+}
+
+.zvezdice {
+    margin-top:17px;
+    display:flex;
+    flex-direction: row;
+}
+
+.zvezdice i {
+    margin-left:10px;
+}
+
+.opis p {
+    font-size:14px;
+    line-height: 28px;
+    color:#252525;
+}

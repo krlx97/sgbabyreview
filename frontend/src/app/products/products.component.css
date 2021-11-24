@@ -1,0 +1,15 @@
+.products {
+  display: flex;
+}
+
+.product {
+  width: 256px;
+  height: auto;
+  margin: 1em;
+  border: 1px solid red;
+}
+
+.product__img {
+  height: auto;
+  width: 100%;
+}

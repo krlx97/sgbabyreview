@@ -1,6 +1,5 @@
-const getCategories = async (app, params) => {
+const getCategories = async (app) => {
   const {mongo, io} = app;
-
   const categories = await mongo.getCategories();
 
   if (!categories) { return; }

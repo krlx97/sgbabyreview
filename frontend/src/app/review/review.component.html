@@ -1,0 +1,30 @@
+<mat-card  *ngIf="review; else isFetching">
+
+  <div class="review">
+    <div class="user-info">
+        <img class="review__img" src="http://localhost:4100/assets/avatars/{{review.username}}.jpg">
+        <div class="username-date">
+          <h3>{{review.username}}</h3>
+          <p>{{review.posted | date: 'mediumDate'}}</p>
+          <button><i class="far fa-heart"></i> {{review.likes.length}}</button>
+          <button>Share</button>
+          <button>Report</button>
+        </div>
+    </div>
+
+    <!-- <div class="zvezdice">
+      
+      {{review.likes.length}}
+    </div> -->
+
+    <div class="opis">
+      <p>{{review.title}}</p>
+      <p>{{review.content}}</p>
+    </div>
+  </div>
+</mat-card>
+
+
+<ng-template #isFetching>
+  Loading...
+</ng-template>

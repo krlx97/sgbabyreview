@@ -1,15 +1,17 @@
-.products {
-  display: flex;
+p {
+  /* margin: 0; */
+  margin:  1em;
 }
 
-.product {
-  width: 256px;
-  height: auto;
-  margin: 1em;
-  border: 1px solid red;
-}
-
-.product__img {
-  height: auto;
+p a {
+  /* text-decoration: none; */
+  display: block;
+  color: white;
+  height: 15vh;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #a0a0a0;
+  border-radius: var(--border-radius);
 }

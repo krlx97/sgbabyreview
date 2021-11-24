@@ -1,8 +1,6 @@
 const getProduct = async (app, params) => {
   const {io, mongo} = app;
-  const {subcategory, productId} = params;
-
-  const product = await mongo.getProduct(subcategory, productId);
+  const product = await mongo.getProduct(params);
 
   if (!product) { return; }
 

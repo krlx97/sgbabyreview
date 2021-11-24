@@ -1,36 +1,34 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
-import {IoService} from "../io.service";
+import {CategoriesService} from "../services/categories/categories.service";
+import {IoService} from "../services/io/io.service";
+import {RouterService} from "../services/router/router.service";
 
 @Component({
   selector: "app-subcategories",
   templateUrl: "./subcategories.component.html",
-  styleUrls: ["./subcategories.component.css"]
+  styleUrls: ["./subcategories.component.css"],
+  providers: [RouterService]
 })
 export class SubcategoriesComponent implements OnInit, OnDestroy {
-  public products: Array<any> = [];
-  public subcategoryUrl: string | null = "";
-  public categoryUrl: string | null = "";
-  public paramMapSub = this._activatedRoute.paramMap.subscribe((paramMap) => {
-    this.categoryUrl = paramMap.get("category");
-    this.subcategoryUrl = paramMap.get("subcategory");
-    const url = paramMap.get("subcategory");
-    this._io.emit("getProducts", {url});
-  });
+  public subcategories: any[] = [];
 
   constructor (
-    private readonly _activatedRoute: ActivatedRoute,
-    private readonly _io: IoService
+    public readonly categoriesService: CategoriesService,
+    private readonly _ioService: IoService,
+    public readonly _routerService: RouterService
   ) {}
 
-  public ngOnInit (): void {
-    this._io.on("getProducts", (params) => {
-      this.products = params.products;
+  ngOnInit (): void {
+    this._ioService.on("getSubcategories", (params) => {
+      this.subcategories = params.subcategories;
+    });
+
+    this._ioService.emit("getSubcategories", {
+      url: this._routerService.urls.category
     });
   }
 
   public ngOnDestroy (): void {
-    this._io.off("getProducts");
-    this.paramMapSub.unsubscribe();
+    this._ioService.off("getSubcategories");
   }
 }

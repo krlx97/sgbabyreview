@@ -1,11 +1,48 @@
-form {
+.form-wrapper {
+  padding: 1em;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  box-sizing: border-box;
+}
+
+.form {
+  width: 80%;
   display: flex;
   flex-direction: column;
 }
 
-button, input {
-  width: 256px;
-  padding: 0.5em 1em;
-  font-size: 16px;
-  box-sizing: border-box;
+.or {
+  position: relative;
+  height: 0;
+  width: 100%;
+  border-bottom: 2px solid rgb(237, 237, 237);
+}
+.or__text {
+  position: absolute;
+  bottom: -50%;
+  left: 50%;
+  padding: 0.7em;
+  transform: translate(-50%, 50%);
+  background-color: white;
+
+  /* border: 1px solid red; */
+}
+
+.form__forgot-password {
+  margin: 1em 0;
+  display: block;
+  align-self: flex-end;
+}
+
+.form__submit {
+  width:100%;
+  background:#80CBC4;
+  border-radius:50px;
+  text-align: center;
+  font-size: 14;
+  color:white;
+  padding:13px 0;
 }

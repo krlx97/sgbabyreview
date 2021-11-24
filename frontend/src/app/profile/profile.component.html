@@ -1,17 +1,90 @@
 <div *ngIf="user.isLoggedIn; else isntLoggedIn">
-  <h1>My activities</h1>
-  <p>You have no activities...</p>
-  
-  <h1>My reviews</h1>
-  <p>You have no reviews...</p>
 
 
-  <h1>My questions</h1>
-  <p>You have no questions...</p>
+  <div class="header">
+    <div class="ad">
+      <h1>AD SPACE</h1>
+    </div>
+    <img src="http://localhost:4100/assets/avatars/{{user.user.username}}.jpg" class="avatar">
+    <div class="cont"><p>{{user.user.firstName}} {{user.user.lastName}}</p><i class="fas fa-check"></i></div>
+    <div><p>{{user.user.city}}, {{user.user.country}}</p></div>
+  </div>
 
-  <h2>{{user.user.firstName}} {{user.user.lastName}} ({{user.user.username}})</h2>
-  <img src="http://localhost:4100/assets/avatars/{{user.user.username}}.jpg">
+  <div class="alert">
+    <div class="alert-box">
+      <p>
+        <span class="purple">Complete your profile</span> and filter your
+        reviews according to the personal details
+      </p>
+    </div>
+  </div>
 
+  <mat-tab-group mat-align-tabs="start">
+    <mat-tab label="Browse">
+      <app-browse></app-browse>
+    </mat-tab>
+    <mat-tab label="My reviews">
+      <div *ngIf="user.user.reviews.length; else noReviews">
+        <!-- <div class="review" *ngFor="let review of user.user.reviews">
+          <img class="review__img" src="http://localhost:4100/assets/avatars/{{review.username}}.jpg">
+          <div>
+            <p>❤ {{review.likes}}</p>
+            <button>Share</button>
+            <p>{{review.username}}</p>
+            <p>{{review.posted | date: 'mediumDate'}}</p>
+            <p>{{review.stars}} ✨</p>
+            <p>{{review.title}}</p>
+            <p>{{review.content}}</p>
+          </div>
+        </div> -->
+        
+        <!-- <div class="review" *ngFor="let review of user.user.reviews">
+          <div class="user-info">
+              <img class="review__img" src="http://localhost:4100/assets/avatars/{{review.username}}.jpg">
+              <div class="username-date">
+                <h3>{{review.username}}</h3>
+                <p>{{review.posted | date: 'mediumDate'}}</p>
+                <button>❤ {{review.likes.length}}</button>
+                <button>Share</button>
+                <button>Report</button> 
+              </div>
+          </div>
+      
+          <div class="zvezdice">
+            <i class="far fa-heart"></i>
+            <i class="far fa-heart"></i>
+            <i class="far fa-heart"></i>
+            <i class="far fa-heart"></i>
+            <i class="far fa-heart"></i>
+            {{review.stars}}
+          </div>
+      
+          <div class="opis">
+            <p>{{review.title}}</p>
+            <p>{{review.content}}</p>
+          </div>
+        </div> -->
+
+        <app-review *ngFor="let review of user.user.reviews" [review]="review"></app-review>
+      </div>
+      <ng-template #noReviews>
+        <p>
+          There are no reviews yet.
+        </p>
+      </ng-template>
+
+
+    </mat-tab>
+    <mat-tab label="My Q&A">Coming soon...</mat-tab>
+    <mat-tab label="My referals ({{user.user.referals.length}})">
+      <p>http://localhost:4200/register/{{user.user.username}}</p>
+      <ul>
+        <li *ngFor="let referal of user.user.referals">{{referal}}</li>
+      </ul>
+    </mat-tab>
+  </mat-tab-group>
+
+<!-- 
   <h1>SET AVATAR</h1>
   <form [formGroup]="avatarForm" (ngSubmit)="onSubmitAvatarForm()">
     <input type="file" placeholder="Avatar" formControlName="avatar" id="avatarInput">
@@ -38,7 +111,7 @@
 
   <hr>
 
-  <button (click)="onLogout()">LOGOUT</button>
+  <button (click)="onLogout()">LOGOUT</button> -->
 </div>
 
 <ng-template #isntLoggedIn>

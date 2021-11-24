@@ -1,0 +1,28 @@
+<div class="menu mat-elevation-z4">
+  <div class="sub">
+    <a routerLink="/home"><img src="assets/menu/home.png"></a>
+  </div>
+
+  <div class="sub">
+    <a><img src="assets/menu/more.png"></a>
+  </div>
+
+  <div class="sub" [routerLink]="userService.isLoggedIn ? ['/profile'] : ['/login']">
+    <a><img src="assets/menu/user.png"></a>
+  </div>
+
+  <div class="sub" [matMenuTriggerFor]="menu">
+    <a><img src="assets/menu/stream.png"></a>
+  </div>
+
+  <div class="plus" (click)="openDialog()">
+    <img src="assets/menu/plus.png" class="plus-icon">
+  </div>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Community</button>
+    <button mat-menu-item routerLink="/blog">Blog</button>
+    <button mat-menu-item routerLink="/contact_us">Contact us</button>
+    <button mat-menu-item routerLink="/about_us">About us</button>
+  </mat-menu>
+</div>

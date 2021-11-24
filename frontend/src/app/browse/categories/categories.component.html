@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <h1>
+    Browse categories
+  </h1>
+
+  <div class="categories">
+    <a
+      *ngFor="let category of categoriesService.categories"
+      class="category"
+      routerLink="/products/{{category.url}}">
+      {{category.title}}
+    </a>
+  </div>
+</div>

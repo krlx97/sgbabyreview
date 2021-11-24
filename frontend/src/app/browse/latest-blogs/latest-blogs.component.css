@@ -1,0 +1,22 @@
+.blogs {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.blogs__title {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.scroll-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 20px;
+}
+
+mat-card {
+  background: #F6F6F6;
+  border-radius: 20px;
+}

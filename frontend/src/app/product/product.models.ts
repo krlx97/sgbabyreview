@@ -1,23 +1,12 @@
 interface Product {
   _id: string;
   title: string;
-  category: string;
-  stars: {
-    one: number;
-    two: number;
-    three: number;
-    four: number;
-    five: number;
+  url: string;
+  category: {
+    title: string;
+    url: string;
   };
   content: string;
-  reviews: Array<{
-    username: string;
-    timeOfPosting: Date;
-    stars: number;
-    title: string;
-    content: string;
-    likes: number;
-  }>;
   qna: Array<{
     product: string;
     timeOfPosting: Date;
@@ -29,6 +18,21 @@ interface Product {
       content: string;
     }>;
   }>;
+  reviews: Array<{
+    urls: {
+      category: string;
+      subcategory: string;
+      product: string;
+      review: string;
+    }
+    username: string;
+    posted: Date;
+    stars: number;
+    title: string;
+    content: string;
+    likes: Array<string>;
+  }>;
+  stars: Array<number>;
   details: {
     content: string;
     url: string;

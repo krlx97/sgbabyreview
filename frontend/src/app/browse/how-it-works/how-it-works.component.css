@@ -1,0 +1,30 @@
+.wrapper {
+  padding-top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.title {
+  align-self: flex-start;
+  margin-left: 1em;
+}
+
+.containers {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  margin-bottom: 1em;
+}
+
+.container__img {
+  width: 160px;
+}
+
+.container__content {
+  width: 160px;
+}

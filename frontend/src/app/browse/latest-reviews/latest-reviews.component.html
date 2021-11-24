@@ -1,0 +1,24 @@
+<div class="reviews">
+  <h1>Latest reviews</h1>
+  <div class="scroll-container">
+    <div
+      *ngFor="let recentReview of recentReviews"
+      class="card"
+      (click)="onShare(recentReview)">
+      <img class="review__img" src="assets/{{recentReview.urls.product}}.png">
+      <a routerLink="/products/{{recentReview.urls.category}}/{{recentReview.urls.subcategory}}/{{recentReview.urls.product}}/review/{{recentReview.urls.review}}">
+        {{recentReview.title}}
+      </a>
+      <div class="zvezdice">
+        <img src="assets/Star 9.png">
+        <img src="assets/Star 9.png">
+        <img src="assets/Star 9.png">
+        <img src="assets/Star 9.png">
+        <img src="assets/Star 9.png">
+      </div>
+      <div class="content">
+        <p>{{recentReview.content}}</p>
+      </div>
+    </div>
+  </div>
+</div>

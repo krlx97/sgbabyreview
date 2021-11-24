@@ -1,1 +1,22 @@
-<h1>Home Component</h1>
+<div class="home">
+
+  <div class="hero">
+    <div class="hero__content">
+      <h1 class="hero__content__title">
+        SINGAPORES' FIRST BABY REVIEW SITE
+      </h1>
+      <p class="hero__content__subtitle">
+        Find genuine reviews of baby products and services shared by fellow
+        parents.
+      </p>
+      <a *ngIf="!userService.isLoggedIn; else profile" routerLink="/login">LOGIN</a>
+      <ng-template #profile>
+        <a routerLink="/profile">PROFILE</a>
+      </ng-template>
+    </div>
+    <img class="hero__img" src="assets/clouds-alt.png">
+  </div>
+
+  <app-browse></app-browse>
+
+</div>

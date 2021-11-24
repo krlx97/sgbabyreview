@@ -3,11 +3,11 @@ const changePassword = require("./changePassword");
 const getCategories = require("./getCategories");
 const getProduct = require("./getProduct");
 const getProducts = require("./getProducts");
+const getRecentReviews = require("./getRecentReviews");
+const getReview = require("./getReview");
 const getSubcategories = require("./getSubcategories");
-const insertProduct = require("./insertProduct");
-const likeProduct = require("./likeProduct");
+const likeReview = require("./likeReview");
 const login = require("./login");
-const rateProduct = require("./rateProduct");
 const register = require("./register");
 const reportProduct = require("./reportProduct");
 const search = require("./search");
@@ -22,11 +22,11 @@ const requests = {
   getCategories,
   getProduct,
   getProducts,
+  getRecentReviews,
+  getReview,
   getSubcategories,
-  insertProduct,
-  likeProduct,
+  likeReview,
   login,
-  rateProduct,
   register,
   reportProduct,
   search,

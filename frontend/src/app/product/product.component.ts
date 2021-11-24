@@ -1,65 +1,99 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
-import { FormBuilder } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
-import { IoService } from "../io.service";
-import { UserService } from "../user.service";
-import { GetProductParams, Product } from "./product.models";
+import {FormBuilder} from "@angular/forms";
+import {IoService} from "../services/io/io.service";
+import {RouterService} from "../services/router/router.service";
+import {UserService} from "../services/user/user.service";
+import {GetProductParams, Product} from "./product.models";
 
 @Component({
   selector: "app-product",
   templateUrl: "./product.component.html",
-  styleUrls: ["./product.component.css"]
+  styleUrls: ["./product.component.css"],
+  providers: [RouterService]
 })
 export class ProductComponent implements OnInit, OnDestroy {
-  product: Product;
-  averageStars: number;
-  stars = [1, 2, 3, 4, 5];
-  readonly writeReviewForm = this._formBuilder.group({
-    stars: [1],
-    title: [""],
-    content: [""],
-  })
-
-  subcategory: string | null;
-  productId: string | null;
-
-  readonly paramMapSub = this._activatedRoute.paramMap.subscribe((paramMap) => {
-    const subcategory = paramMap.get("subcategory");
-    const productId = paramMap.get("product");
-    this.subcategory = paramMap.get("subcategory");
-    this.productId = paramMap.get("product");
-    this._io.emit("getProduct", {subcategory, productId});
-  });
-
   constructor (
     private readonly _formBuilder: FormBuilder,
-    private readonly _activatedRoute: ActivatedRoute,
     private readonly _io: IoService,
+    private readonly _routerService: RouterService,
     public readonly userService: UserService
   ) {}
 
+  public product: Product;
+  public averageStars = "";
+  public stars = [1, 2, 3, 4, 5];
+  public readonly writeReviewForm = this._formBuilder.group({
+    stars: [1],
+    title: [""],
+    content: [""],
+  });
+
   public onReviewSubmit (): void {
-    const {subcategory, productId} = this;
-    const {stars, title, content} = this.writeReviewForm.value;
+    const {category, subcategory, product} = this._routerService.urls;
     const {username} = this.userService.user;
-    const timeOfPosting = new Date();
+    const {stars, title, content} = this.writeReviewForm.value;
 
-    console.log("onReviewSubmit");
-  
-    this._io.emit("writeReview", {subcategory, productId, username, stars, title, content, timeOfPosting});
-  }
-
-  ngOnInit (): void {
-    this._io.on("getProduct", (params: GetProductParams) => {
-      this.product = params.product;
-
-      const {one, two, three, four, five} = params.product.stars;
-      this.averageStars = (1 * one + 2 * two + 3 * three + 4 * four + 5 * five) / (one + two + three + four + five);
+    this._io.emit("writeReview", {
+      urls: {category, subcategory, product},
+      username,
+      stars,
+      title,
+      content
     });
   }
 
-  ngOnDestroy (): void {
+  public onLikeReview (reviewUrl: string): void {
+    const {subcategoryUrl, productUrl} = this._routerService;
+    const {username} = this.userService.user;
+
+    this._io.emit("likeReview", {username, subcategoryUrl, productUrl, reviewUrl});
+  }
+
+  public async onShareReview(urls): Promise<void> {
+    console.log(urls);
+    const {category, subcategory, product, review} = urls;
+    await navigator.clipboard.writeText(`http://localhost:4200/products/${category}/${subcategory}/${product}/review/${review}`);
+  }
+
+  public ngOnInit (): void {
+    const {subcategoryUrl, productUrl} = this._routerService;
+
+    this._io.on("getProduct", (params: GetProductParams) => {
+      const {product} = params;
+      const {stars} = product;
+
+      this.product = product;
+
+      const totalStars = stars.reduce((previous, star) => previous + star);
+      const starsVal = stars.reduce((prev, star, i) => star * (i + 1));
+
+      this.averageStars = (starsVal / totalStars).toFixed(2);
+    });
+
+    this._io.on("likeReview", (params) => {
+      const {username, subcategoryUrl, productUrl, reviewUrl} = params;
+
+      if (this.product.url === productUrl) {
+        const review = this.product.reviews.find((review) => review.urls.review === reviewUrl);
+
+        if (!review) { return; }
+
+        const i = this.product.reviews.indexOf(review);
+
+        if (this.product.reviews[i].likes.includes(username)) {
+          const k = this.product.reviews[i].likes.indexOf(username);
+
+          this.product.reviews[i].likes.splice(k, 1);
+        } else {
+          this.product.reviews[i].likes.push(username);
+        }
+      }
+    });
+
+    this._io.emit("getProduct", {subcategoryUrl, productUrl});
+  }
+
+  public ngOnDestroy (): void {
     this._io.off("getProduct");
-    this.paramMapSub.unsubscribe();
   }
 }

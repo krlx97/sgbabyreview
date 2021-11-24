@@ -1,8 +1,9 @@
 import {AfterViewInit, Component, OnDestroy, OnInit} from "@angular/core";
 import {FormBuilder} from "@angular/forms";
 
-import {IoService} from "../io.service";
-import {UserService} from "../user.service";
+import {CategoriesService} from "../services/categories/categories.service";
+import {IoService} from "../services/io/io.service";
+import {UserService} from "../services/user/user.service";
 
 import {ChangeEmailParams} from "./profile.models";
 
@@ -29,6 +30,7 @@ export class ProfileComponent implements AfterViewInit, OnDestroy, OnInit {
 
   constructor (
     private readonly _fb: FormBuilder,
+    public readonly categoriesService: CategoriesService,
     private readonly _ioService: IoService,
     public readonly user: UserService
   ) {}
@@ -76,8 +78,12 @@ export class ProfileComponent implements AfterViewInit, OnDestroy, OnInit {
       token: "",
       firstName: "",
       lastName: "",
+      city: "",
+      country:"",
       email: "",
-      username: ""
+      username: "",
+      referals: [],
+      reviews: []
     };
   }
 }

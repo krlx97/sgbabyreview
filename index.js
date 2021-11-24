@@ -84,7 +84,7 @@ const init = async () => {
       //   `frontend/dist/assets/avatars/${username}.jpg`,
       //   `frontend/src/assets/avatars/${username}.jpg`
       // );
-    })
+    });
   });
 
   httpServer.listen(port);
