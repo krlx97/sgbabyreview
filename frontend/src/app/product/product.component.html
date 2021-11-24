@@ -2,7 +2,7 @@
 
 <div *ngIf="product; else fetching">
   <div class="hero">
-    <img class="product__img" src="assets/{{product._id}}.png">
+    <img class="product__img" [src]="imageService.getUrl('products', product.url + '.png')">
   </div>
 
   <div class="product__content">

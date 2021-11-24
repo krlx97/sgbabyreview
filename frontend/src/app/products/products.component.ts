@@ -1,4 +1,5 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
+import { ImageService } from "../services/image.service";
 import {IoService} from "../services/io/io.service";
 import {RouterService} from "../services/router/router.service";
 
@@ -13,7 +14,8 @@ export class ProductsComponent implements OnDestroy, OnInit {
 
   constructor (
     private readonly _ioService: IoService,
-    private readonly _routerService: RouterService
+    private readonly _routerService: RouterService,
+    public readonly imageService: ImageService
   ) {}
 
   public ngOnInit (): void {

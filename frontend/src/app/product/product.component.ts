@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
 import {FormBuilder} from "@angular/forms";
+import { ImageService } from "../services/image.service";
 import {IoService} from "../services/io/io.service";
 import {RouterService} from "../services/router/router.service";
 import {UserService} from "../services/user/user.service";
@@ -16,7 +17,8 @@ export class ProductComponent implements OnInit, OnDestroy {
     private readonly _formBuilder: FormBuilder,
     private readonly _io: IoService,
     private readonly _routerService: RouterService,
-    public readonly userService: UserService
+    public readonly userService: UserService,
+    public readonly imageService: ImageService
   ) {}
 
   public product: Product;

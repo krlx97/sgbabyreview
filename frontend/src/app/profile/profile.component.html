@@ -1,11 +1,11 @@
 <div *ngIf="user.isLoggedIn; else isntLoggedIn">
-
-
   <div class="header">
     <div class="ad">
       <h1>AD SPACE</h1>
     </div>
-    <img src="http://localhost:4100/assets/avatars/{{user.user.username}}.jpg" class="avatar">
+    <img
+      [src]="imageService.getUrl('avatars', user.user.username + '.jpg')"
+      class="avatar">
     <div class="cont"><p>{{user.user.firstName}} {{user.user.lastName}}</p><i class="fas fa-check"></i></div>
     <div><p>{{user.user.city}}, {{user.user.country}}</p></div>
   </div>

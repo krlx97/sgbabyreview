@@ -1,12 +1,13 @@
 import {Injectable} from "@angular/core";
 import {io} from "socket.io-client";
 import * as SocketIOFileUpload from "socketio-file-upload";
+import settings from "src/app/settings";
 
 @Injectable({
   providedIn: "root"
 })
 export class IoService {
-  private readonly _socket = io("ws://localhost:4100");
+  private readonly _socket = io(settings.production ? "" : "ws://localhost:4100");
   readonly uploader = new SocketIOFileUpload(this._socket);
 
   public emit (event: string, data: object = {}): void {

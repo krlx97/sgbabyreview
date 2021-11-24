@@ -25,7 +25,7 @@ const init = async () => {
   const socketioServer = new Server(httpServer, opts);
 
   const mongoClient = await MongoClient.connect(uri);
-  const mongoDb = mongoClient.db("bebe");
+  const mongoDb = mongoClient.db("sgbabyreview");
 
   const requestKeys = Object.keys(requests);
 
@@ -39,11 +39,11 @@ const init = async () => {
   // =============================================
 
   app.use("/assets", express.static(join(__dirname, "assets")));
-  app.use(express.static(join(__dirname, "frontend/dist")));
+  app.use(express.static(join(__dirname, "app")));
   app.use(siofu.router);
 
-  app.get("/", (req, res) => res.sendFile(`${__dirname}/frontend/dist/index.html`));
-  app.get("*", (req, res) => res.sendFile(`${__dirname}/frontend/dist/index.html`));
+  app.get("/", (req, res) => res.sendFile(`${__dirname}/app/index.html`));
+  app.get("*", (req, res) => res.sendFile(`${__dirname}/app/index.html`));
 
   const uploader = new siofu({
     dir: "assets/avatars",

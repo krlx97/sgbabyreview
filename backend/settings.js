@@ -1,8 +1,8 @@
-const production = false;
+const production = true;
 
 const settings = {
   mongo: {
-    uri: "mongodb://localhost:27017"
+    uri: "mongodb+srv://test:test@cluster0.ycjif.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
   },
   socket: {
     opts: production ? {} : {

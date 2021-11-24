@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnDestroy, OnInit} from "@angular/core";
 import {FormBuilder} from "@angular/forms";
 
 import {CategoriesService} from "../services/categories/categories.service";
+import { ImageService } from "../services/image.service";
 import {IoService} from "../services/io/io.service";
 import {UserService} from "../services/user/user.service";
 
@@ -32,7 +33,8 @@ export class ProfileComponent implements AfterViewInit, OnDestroy, OnInit {
     private readonly _fb: FormBuilder,
     public readonly categoriesService: CategoriesService,
     private readonly _ioService: IoService,
-    public readonly user: UserService
+    public readonly user: UserService,
+    public readonly imageService: ImageService
   ) {}
 
   public ngAfterViewInit (): void {

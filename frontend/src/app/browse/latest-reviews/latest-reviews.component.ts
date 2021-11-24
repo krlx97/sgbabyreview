@@ -1,4 +1,5 @@
 import {Component, OnInit} from "@angular/core";
+import { ImageService } from "src/app/services/image.service";
 import {IoService} from "../../services/io/io.service";
 
 @Component({
@@ -10,7 +11,8 @@ export class LatestReviewsComponent implements OnInit {
   public recentReviews: any[] = [];
 
   constructor (
-    private readonly _ioService: IoService
+    private readonly _ioService: IoService,
+    public readonly imageService: ImageService
   ) {}
 
   public ngOnInit(): void {
