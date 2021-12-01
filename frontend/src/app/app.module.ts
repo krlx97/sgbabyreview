@@ -4,6 +4,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {RouterModule} from "@angular/router";
+import {RatingModule} from 'ng-starrating';
 import {AppRoutingModule} from "./app-routing.module";
 
 import {BrowseModule} from "./browse/browse.module";
@@ -36,6 +37,7 @@ import { BlogPageComponent } from './blog-page/blog-page.component';
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule,
+    RatingModule,
     AppRoutingModule,
     BrowseModule,
     FooterModule,
@@ -43,6 +45,7 @@ import { BlogPageComponent } from './blog-page/blog-page.component';
   ],
   declarations: [
     AppComponent,
+    AddReviewPopupComponent,
     LoginFormComponent,
     RegisterFormComponent,
     ContactUsComponent,

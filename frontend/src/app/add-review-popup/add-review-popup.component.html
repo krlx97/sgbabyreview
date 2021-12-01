@@ -1,1 +1,135 @@
-<p>add-review-popup works!</p>
+<form *ngIf="userService.isLoggedIn; else withLogin" [formGroup]="writeReviewForm" (ngSubmit)="onReviewSubmit()">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Select product</mat-label>
+    <mat-select name="food">
+
+      <mat-option value="skip_hop_moby_smart_sling_3_stage_tub">
+        <img class="product__img" [src]="imageService.getUrl('products', 'skip_hop_moby_smart_sling_3_stage_tub' + '.png')">
+        Skip Hop Moby Smart Sling 3-Stage Tub
+      </mat-option>
+
+      <mat-option value="shnuggle_baby_bath_with_plug_and_foam_backrest">
+        <img class="product__img" [src]="imageService.getUrl('products', 'shnuggle_baby_bath_with_plug_and_foam_backrest' + '.png')">
+        Shnuggle Baby Bath With Plug & Foam Backrest
+      </mat-option>
+
+      <mat-option value="ikea_lattsam_baby_bath_tub">
+        <img class="product__img" [src]="imageService.getUrl('products', 'ikea_lattsam_baby_bath_tub' + '.png')">
+        Ikea LÄTTSAM Baby Bath Tub
+      </mat-option>
+
+    </mat-select>
+  </mat-form-field>
+
+  <star-rating
+    [value]="5"
+    [totalstars]="5"
+    checkedcolor="#80CBC4"
+    uncheckedcolor="grey"
+    size="16px"
+    [readonly]="false"
+    (rate)="onRate($event)">
+  </star-rating>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Title</mat-label>
+    <input matInput type="text" placeholder="Title" formControlName="title">
+  </mat-form-field>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Content</mat-label>
+    <textarea matInput placeholder="Content" formControlName="content"></textarea>
+  </mat-form-field>
+
+  <code>
+    {{writeReviewForm.value | json}}
+  </code>
+
+  <button type="submit">SUBMIT</button>
+
+</form>
+
+<ng-template #withLogin>
+  <mat-stepper labelPosition="bottom">
+
+    <mat-step [stepControl]="writeReviewForm">
+
+      <form [formGroup]="writeReviewForm">
+        <ng-template matStepLabel>Review</ng-template>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Select product</mat-label>
+          <mat-select name="food">
+      
+            <mat-option value="skip_hop_moby_smart_sling_3_stage_tub">
+              <img class="product__img" [src]="imageService.getUrl('products', 'skip_hop_moby_smart_sling_3_stage_tub' + '.png')">
+              Skip Hop Moby Smart Sling 3-Stage Tub
+            </mat-option>
+      
+            <mat-option value="shnuggle_baby_bath_with_plug_and_foam_backrest">
+              <img class="product__img" [src]="imageService.getUrl('products', 'shnuggle_baby_bath_with_plug_and_foam_backrest' + '.png')">
+              Shnuggle Baby Bath With Plug & Foam Backrest
+            </mat-option>
+      
+            <mat-option value="ikea_lattsam_baby_bath_tub">
+              <img class="product__img" [src]="imageService.getUrl('products', 'ikea_lattsam_baby_bath_tub' + '.png')">
+              Ikea LÄTTSAM Baby Bath Tub
+            </mat-option>
+      
+          </mat-select>
+        </mat-form-field>
+      
+        <star-rating
+          [value]="5"
+          [totalstars]="5"
+          checkedcolor="#80CBC4"
+          uncheckedcolor="grey"
+          size="16px"
+          [readonly]="false"
+          (rate)="onRate($event)">
+        </star-rating>
+      
+        <mat-form-field appearance="standard">
+          <mat-label>Title</mat-label>
+          <input matInput type="text" placeholder="Title" formControlName="title">
+        </mat-form-field>
+      
+        <mat-form-field appearance="standard">
+          <mat-label>Content</mat-label>
+          <textarea matInput placeholder="Content" formControlName="content"></textarea>
+        </mat-form-field>
+
+        <button matStepperNext>NEXT</button>
+      
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="form">
+      <form class="form" [formGroup]="form">
+        <ng-template matStepLabel>Login</ng-template>
+
+        <mat-form-field appearance="standard">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" placeholder="Email" formControlName="email">
+    
+          <!-- <mat-error *ngIf="isEmailInvalid">Invalid email</mat-error>
+          <mat-error *ngIf="isEmptyFormField(email)">Field can't be empty</mat-error> -->
+        </mat-form-field>
+    
+        <mat-form-field appearance="standard">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" placeholder="Password" formControlName="password">
+          <!-- <mat-error *ngIf="isEmptyFormField(password)">Field can't be empty</mat-error>
+          <mat-error *ngIf="!isLength(password, 6)">Minimum 6 characters</mat-error> -->
+        </mat-form-field>
+    
+        <button class="form__submit" [disabled]="!form.valid" (click)="loginAndWriteReview()">
+          Log in
+        </button>
+    
+      </form>
+    </mat-step>
+
+  </mat-stepper>
+</ng-template>

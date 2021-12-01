@@ -22,13 +22,23 @@ export class ProductComponent implements OnInit, OnDestroy {
   ) {}
 
   public product: Product;
-  public averageStars = "";
+  public averageStars = 0;
   public stars = [1, 2, 3, 4, 5];
   public readonly writeReviewForm = this._formBuilder.group({
     stars: [1],
     title: [""],
     content: [""],
   });
+
+
+  //======
+  public oneWidth = 0;
+  public twoWidth = 0;
+  public threeWidth = 0;
+  public fourWidth = 0;
+  public fiveWidth = 0;
+  //======
+
 
   public onReviewSubmit (): void {
     const {category, subcategory, product} = this._routerService.urls;
@@ -69,7 +79,13 @@ export class ProductComponent implements OnInit, OnDestroy {
       const totalStars = stars.reduce((previous, star) => previous + star);
       const starsVal = stars.reduce((prev, star, i) => star * (i + 1));
 
-      this.averageStars = (starsVal / totalStars).toFixed(2);
+      this.oneWidth = 100 / totalStars * stars[0];
+      this.twoWidth = 100 / totalStars * stars[1];
+      this.threeWidth = 100 / totalStars * stars[2];
+      this.fourWidth = 100 / totalStars * stars[3];
+      this.fiveWidth = 100 / totalStars * stars[4];
+
+      this.averageStars = (starsVal / totalStars);
     });
 
     this._io.on("likeReview", (params) => {

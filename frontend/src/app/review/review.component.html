@@ -1,24 +1,24 @@
-<mat-card  *ngIf="review; else isFetching">
+<mat-card *ngIf="review; else isFetching">
 
   <div class="review">
     <div class="user-info">
-        <img class="review__img" src="http://localhost:4100/assets/avatars/{{review.username}}.jpg">
-        <div class="username-date">
-          <div class="user">
-            <p>{{review.username}}</p>
-            <p>{{review.posted | date: 'mediumDate'}}</p>
-          </div>
-         
+      <img class="review__img" src="http://localhost:4100/assets/avatars/{{review.username}}.jpg">
+      <div class="username-date">
+        <div class="user">
+          <p>{{review.username}}</p>
+          <p>{{review.posted | date: 'mediumDate'}}</p>
         </div>
+      </div>
     </div>
 
- <div class="zvezdice">
-  <i class="fas fa-star fa-2x"></i>
-  <i class="fas fa-star fa-2x"></i>
-  <i class="fas fa-star fa-2x"></i>
-  <i class="far fa-star fa-2x"></i>
-  <i class="far fa-star fa-2x"></i>
-    </div> 
+    <star-rating
+      [value]="review.stars"
+      [totalstars]="5"
+      checkedcolor="#80CBC4"
+      uncheckedcolor="grey"
+      size="24px"
+      [readonly]="true">
+    </star-rating>
 
     <div class="opis">
       <p>{{review.content}}</p>
@@ -31,9 +31,7 @@
     </div>
   </div>
 
-
 </mat-card>
-
 
 <ng-template #isFetching>
   Loading...

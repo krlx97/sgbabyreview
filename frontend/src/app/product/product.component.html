@@ -10,8 +10,16 @@
   
     <!-- <a routerLink="../{{product.category.url}}"><i>{{product.category.title}}</i></a> -->
   
+    
     <div class="stars">
-      <span *ngFor="let i of [0,1,2,3,4]"><img src="assets/star.png"></span> {{averageStars}} / based on {{product.reviews.length}} reviews.
+      <star-rating
+        [value]="averageStars"
+        [totalstars]="5"
+        checkedcolor="#80CBC4"
+        uncheckedcolor="grey"
+        size="24px"
+        [readonly]="true">
+      </star-rating> {{averageStars.toFixed(2)}} / based on {{product.reviews.length}} reviews.
     </div>
   
     <p>{{product.content}}</p>
@@ -30,42 +38,42 @@
           <div class="barss">
             5 Stars
             <div class="meter mat-elevation-z1">
-              <div class="meter__progress"></div>
+              <div class="meter__progress" [style.width.%]="fiveWidth"></div>
             </div>
             {{product.stars[4]}}
           </div>
           <div class="barss">
             4 Stars
             <div class="meter mat-elevation-z1">
-              <div class="meter__progress"></div>
+              <div class="meter__progress" [style.width.%]="fourWidth"></div>
             </div>
             {{product.stars[3]}}
           </div>
           <div class="barss">
             3 Stars
             <div class="meter mat-elevation-z1">
-              <div class="meter__progress"></div>
+              <div class="meter__progress" [style.width.%]="threeWidth"></div>
             </div>
             {{product.stars[2]}}
           </div>
           <div class="barss">
             2 Stars
             <div class="meter mat-elevation-z1">
-              <div class="meter__progress"></div>
+              <div class="meter__progress" [style.width.%]="twoWidth"></div>
             </div>
             {{product.stars[1]}}
           </div>
           <div class="barss">
             1 Stars
             <div class="meter mat-elevation-z1">
-              <div class="meter__progress"></div>
+              <div class="meter__progress" [style.width.%]="oneWidth"></div>
             </div>
             {{product.stars[0]}}
           </div>
         </div>
 
         <app-review *ngFor="let review of product.reviews" [review]="review"></app-review>
-         <div class="review" *ngFor="let review of product.reviews">
+         <!-- <div class="review" *ngFor="let review of product.reviews">
           <div class="user-info">
               <img class="review__img" src="http://localhost:4100/assets/avatars/{{review.username}}.jpg">
               <div class="username-date">
@@ -89,7 +97,7 @@
             <p>{{review.title}}</p>
             <p>{{review.content}}</p>
           </div>
-        </div> 
+        </div>  -->
       </div>
 
       <ng-template #noReviews>

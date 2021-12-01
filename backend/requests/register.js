@@ -2,15 +2,7 @@ const register = async (app, params) => {
   const {crypto, io, mongo} = app;
   const {firstName, lastName, email, username, password, referer} = params;
   let refererUser;
-
-  if (referer) {
-    refererUser = await mongo.findUser({username: referer});
-
-    if (!refererUser) {
-      io.notification("Invalid referer.");
-      return;
-    }
-  }
+  let updatedReferer;
 
   const [userByEmail, userByUsername] = await Promise.all([
     mongo.findUser({email}),
@@ -40,13 +32,24 @@ const register = async (app, params) => {
     referals: []
   });
 
-  const updatedReferer = await mongo.updateUser2({username: referer}, {
-    $push: {
-      referals: username
-    }
-  })
+  if (!inserted.acknowledged) { return; }
 
-  if (!inserted.acknowledged || !updatedReferer) { return; }
+  if (referer) {
+    refererUser = await mongo.findUser({username: referer});
+
+    if (!refererUser) {
+      io.notification("Invalid referer.");
+      return;
+    }
+
+    updatedReferer = await mongo.updateUser2({username: referer}, {
+      $push: {
+        referals: username
+      }
+    });
+
+    if (!updatedReferer) { return; }
+  }
 
   io.notification("Account created successfully.");
 };

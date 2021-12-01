@@ -8,6 +8,7 @@ const getReview = require("./getReview");
 const getSubcategories = require("./getSubcategories");
 const likeReview = require("./likeReview");
 const login = require("./login");
+const loginAndWriteReview = require("./loginAndWriteReview");
 const register = require("./register");
 const reportProduct = require("./reportProduct");
 const search = require("./search");
@@ -27,6 +28,7 @@ const requests = {
   getSubcategories,
   likeReview,
   login,
+  loginAndWriteReview,
   register,
   reportProduct,
   search,

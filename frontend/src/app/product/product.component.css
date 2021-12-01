@@ -1,14 +1,15 @@
 .product {
   width: 100%;
 }
+
 .meter {
   margin: 0 0.7em;
   height: 16px;
   flex-grow: 1;
   background:white;
   border-radius: var(--border-radius);
-
 }
+
 .meter__progress {
   width: 60%;
   height: 16px;

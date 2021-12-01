@@ -15,8 +15,8 @@ export class RegisterFormComponent {
     lastName: ["", [Validators.required]],
     email: ["", [Validators.required, Validators.email]],
     username: ["", [Validators.required]],
-    password: ["", [Validators.required]],
-    repeatPassword: ["", [Validators.required]],
+    password: ["", [Validators.required, Validators.minLength(6)]],
+    repeatPassword: ["", [Validators.required, Validators.minLength(6)]],
   });
 
   constructor (

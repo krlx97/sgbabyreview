@@ -22,7 +22,7 @@
   <mat-tab-group  mat-stretch-tabs>
     <mat-tab label="My reviews">
       <div *ngIf="user.user.reviews.length; else noReviews">
-         <div class="review" *ngFor="let review of user.user.reviews">
+        <!-- <div class="review" *ngFor="let review of user.user.reviews">
           <img class="review__img" src="http://localhost:4100/assets/avatars/{{review.username}}.jpg">
           <div>
             <p>❤ {{review.likes}}</p>
@@ -33,7 +33,7 @@
             <p>{{review.title}}</p>
             <p>{{review.content}}</p>
           </div>
-        </div> 
+        </div> -->
         
         <!-- <div class="review" *ngFor="let review of user.user.reviews">
           <div class="user-info">

@@ -5,7 +5,7 @@ import {User} from "src/app/models/user.model";
   providedIn: "root"
 })
 export class UserService {
-  isLoggedIn = true;
+  isLoggedIn = false;
   user: User = {
     _id: "abc",
     city:" 7",

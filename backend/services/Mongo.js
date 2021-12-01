@@ -195,7 +195,7 @@ class Mongo {
     let inserted;
 
     try {
-      inserted = await this.#db.collection("users").insertOne(params);
+      inserted = await this.#db.collection("users").insertOne({...params, city: "", country: "", reviews: []});
     } catch (error) {
       this.#handleError(error);
     }

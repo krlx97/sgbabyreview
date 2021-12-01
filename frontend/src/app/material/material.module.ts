@@ -7,6 +7,9 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatListModule} from "@angular/material/list";
+import {MatRadioModule} from '@angular/material/radio';
+import {MatSelectModule} from '@angular/material/select';
+import {MatStepperModule} from '@angular/material/stepper';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatTabsModule} from "@angular/material/tabs";
 
@@ -19,6 +22,9 @@ import {MatTabsModule} from "@angular/material/tabs";
     MatInputModule,
     MatMenuModule,
     MatListModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatStepperModule,
     MatSnackBarModule,
     MatTabsModule
   ],
@@ -30,6 +36,9 @@ import {MatTabsModule} from "@angular/material/tabs";
     MatInputModule,
     MatMenuModule,
     MatListModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatStepperModule,
     MatSnackBarModule,
     MatTabsModule
   ]
