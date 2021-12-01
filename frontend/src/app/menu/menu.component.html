@@ -1,15 +1,15 @@
 <div class="menu ">
   <div class="menu-wrapper">
     <div class="sub">
-      <a routerLink="/home" [routerLinkActive]="'is-active'"><i class="fas fa-home"></i></a>
+      <a routerLink="/home"><i class="fas fa-igloo"></i></a>
     </div>
   
     <div class="sub">
-      <a [routerLinkActive]="'is-active'" style="margin-right:20px;"><i class="far fa-clone"></i></a>
+      <a [routerLinkActive]="'is-active'" style="margin-right:20px;"><i class="fas fa-clone"></i></a>
     </div>
   
     <div class="sub" [routerLink]="userService.isLoggedIn ? ['/profile'] : ['/login']">
-      <a [routerLinkActive]="'is-active'" style="margin-left:20px;"><i class="far fa-user"></i></a>
+      <a [routerLinkActive]="'is-active'" style="margin-left:20px;"><i class="fas fa-user"></i></a>
     </div>
   
     <div class="sub" [matMenuTriggerFor]="menu">

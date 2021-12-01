@@ -6,15 +6,17 @@
   margin: 0 0.7em;
   height: 16px;
   flex-grow: 1;
-  background:white;
+  background:#e6e6e6;
   border-radius: var(--border-radius);
+  
 }
 
+
 .meter__progress {
-  width: 60%;
+
   height: 16px;
   border-radius: var(--border-radius);
-  background: var(--cyan);
+  background: linear-gradient(to left, #8DE5B0, #80CBC4);
 }
 
 .hero {
@@ -27,6 +29,7 @@
   border-bottom-right-radius: 64px;
   /* color: white; */
 }
+
 .hero__img {
   width: 100%;
   position: absolute;
@@ -35,8 +38,16 @@
 }
 
 .product__content {
-  padding: 1em;
+  padding:0 25px;
+  padding-top:25px;
   box-sizing: border-box;
+}
+
+.product__content p {
+  font-weight: 300;
+  line-height: 30px;
+  color:#6A6969;
+  font-size:16px;
 }
 
 .stars {
@@ -135,4 +146,17 @@
     font-size:14px;
     line-height: 28px;
     color:#252525;
+}
+
+.btn--fill {
+  width:100%;
+  background: linear-gradient(to left, #8DE5B0, #80CBC4);
+  border-radius:50px;
+  text-align: center;
+  font-size: 14;
+  color:white;
+  padding:17px 0;
+  margin:1em 0;
+  -webkit-box-shadow: 1px 5px 20px 5px rgba(148, 148, 148, 0.4);
+  box-shadow: 1px 5px 20px 5px rgba(148, 148, 148, 0.4);
 }

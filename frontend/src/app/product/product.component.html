@@ -30,42 +30,42 @@
   </div>
 
 
-  <mat-tab-group>
+  <mat-tab-group mat-stretch-tabs>
 
     <mat-tab label="Reviews ({{product.reviews.length}})">
       <div *ngIf="product.reviews.length; else noReviews">
         <div class="ratings">
           <div class="barss">
             5 Stars
-            <div class="meter mat-elevation-z1">
+            <div class="meter ">
               <div class="meter__progress" [style.width.%]="fiveWidth"></div>
             </div>
             {{product.stars[4]}}
           </div>
           <div class="barss">
             4 Stars
-            <div class="meter mat-elevation-z1">
+            <div class="meter ">
               <div class="meter__progress" [style.width.%]="fourWidth"></div>
             </div>
             {{product.stars[3]}}
           </div>
           <div class="barss">
             3 Stars
-            <div class="meter mat-elevation-z1">
+            <div class="meter ">
               <div class="meter__progress" [style.width.%]="threeWidth"></div>
             </div>
             {{product.stars[2]}}
           </div>
           <div class="barss">
             2 Stars
-            <div class="meter mat-elevation-z1">
+            <div class="meter ">
               <div class="meter__progress" [style.width.%]="twoWidth"></div>
             </div>
             {{product.stars[1]}}
           </div>
           <div class="barss">
             1 Stars
-            <div class="meter mat-elevation-z1">
+            <div class="meter ">
               <div class="meter__progress" [style.width.%]="oneWidth"></div>
             </div>
             {{product.stars[0]}}
