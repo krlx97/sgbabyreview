@@ -1,0 +1,30 @@
+.blob_right {
+    position:absolute;
+    right:0;
+    top:0;
+}
+
+h1, p {
+    font-size:18px;
+}
+
+h1 {
+    font-weight: 600;
+    margin-top:1em;
+}
+
+p {
+    font-weight: 300;
+    line-height: 30px;
+    color:#6A6969;
+}
+
+.wrapper {
+    padding:0 2em;
+    padding-bottom:2em;
+}
+
+* {
+    font-family: Nunito;
+}
+

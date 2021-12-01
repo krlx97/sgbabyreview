@@ -1,0 +1,24 @@
+p {
+    font-size:14px;
+    font-weight: 300;
+    line-height: 30px;
+    color:#6A6969;
+}
+
+h1 {
+    font-size:18px;
+    font-weight: 600;
+    color:#222222;
+}
+
+.wrapper {
+    padding:1em 2em;
+}
+
+* {
+    font-family: Nunito;
+}
+
+.wrapper {
+    padding-top:100px;
+}

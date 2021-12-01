@@ -65,7 +65,7 @@
         </div>
 
         <app-review *ngFor="let review of product.reviews" [review]="review"></app-review>
-        <!-- <div class="review" *ngFor="let review of product.reviews">
+         <div class="review" *ngFor="let review of product.reviews">
           <div class="user-info">
               <img class="review__img" src="http://localhost:4100/assets/avatars/{{review.username}}.jpg">
               <div class="username-date">
@@ -89,7 +89,7 @@
             <p>{{review.title}}</p>
             <p>{{review.content}}</p>
           </div>
-        </div> -->
+        </div> 
       </div>
 
       <ng-template #noReviews>

@@ -1,20 +1,22 @@
 .wrapper {
-  padding-top: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  padding-bottom:2em;
 }
 
 .title {
   align-self: flex-start;
-  margin-left: 1em;
+  margin-left: 25px;
+  font-size:18px;
 }
 
 .containers {
   display: flex;
   flex-direction: column;
+  margin-top:30px;
 }
 
 .container {
@@ -28,3 +30,24 @@
 .container__content {
   width: 160px;
 }
+
+h1, p {
+  font-family: Nunito;
+}
+
+.containers h1 {
+  font-size:22px;
+}
+
+p {
+  font-size:16px;
+}
+
+img {
+  margin-bottom:25px;
+}
+
+.container:not(:first-child):not(:last-child) {
+  margin:50px 0;
+}
+

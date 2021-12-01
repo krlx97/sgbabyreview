@@ -1,11 +1,14 @@
 .wrapper {
-  padding: 1em;
   box-sizing: border-box;
+  padding-top:30px;
 }
 
 .categories {
   display: flex;
   overflow-x: auto;
+  padding-top:30px;
+  padding-right:25px;
+
 }
 .categories::-webkit-scrollbar {
   display: none;
@@ -20,6 +23,20 @@
   text-decoration: none;
 }
 
-.category:first-child {
+.category {
   border: 1px solid #80cbc4;
+}
+
+.category {
+  margin-left:1em;
+}
+
+.category:first-child {
+  margin-left:25px;
+}
+
+h1 {
+  margin-left:25px;
+  font-size:18px;
+  font-family: Nunito;
 }

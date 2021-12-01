@@ -1,25 +1,40 @@
-<h3>Register</h3>
-
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  <label for="firstName">First Name: </label>
-  <input id="firstName" type="text" formControlName="firstName">
-
-  <label for="lastName">Last Name: </label>
-  <input id="lastName" type="text" formControlName="lastName">
-
-  <label for="email">Email: </label>
-  <input id="email" type="text" formControlName="email">
-
-  <label for="username">Username: </label>
-  <input id="username" type="text" formControlName="username">
-
-  <label for="password">Password: </label>
-  <input id="password" type="password" formControlName="password">
-
-  <label for="repeatPassword">Repeat password: </label>
-  <input id="repeatPassword" type="password" formControlName="repeatPassword">
-
-  <button type="submit" [disabled]="!registerForm.valid">
-    Submit
-  </button>
-</form>
+<img src="assets/vector-top-left.png" class="blob_right">
+<div class="form-wrapper">
+  <h1>Sign up</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="standard">
+      <mat-label>First name</mat-label>
+      <input matInput type="email" placeholder="First name" formControlName="firstName">
+    </mat-form-field>
+    
+    <mat-form-field appearance="standard">
+      <mat-label>Last name</mat-label>
+      <input matInput type="email" placeholder="First name" formControlName="lastName">
+    </mat-form-field>
+  
+    <mat-form-field appearance="standard">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" placeholder="Email" formControlName="email">
+    </mat-form-field>
+  
+    <mat-form-field appearance="standard">
+      <mat-label>Username</mat-label>
+      <input matInput type="email" placeholder="Email" formControlName="username">
+    </mat-form-field>
+  
+    <mat-form-field appearance="standard">
+      <mat-label>Password</mat-label>
+      <input matInput type="email" placeholder="Email" formControlName="password">
+    </mat-form-field>
+  
+    <mat-form-field appearance="standard">
+      <mat-label>Repeat password</mat-label>
+      <input matInput type="email" placeholder="Email" formControlName="repeatPassword">
+    </mat-form-field>
+    
+    <button class="form__submit" type="submit" [disabled]="!registerForm.valid">
+      Register
+    </button>
+  </form>
+  
+</div>

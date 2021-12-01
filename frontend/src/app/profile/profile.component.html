@@ -1,12 +1,12 @@
 <div *ngIf="user.isLoggedIn; else isntLoggedIn">
   <div class="header">
     <div class="ad">
-      <h1>AD SPACE</h1>
+      <h1>Your ad here</h1>
     </div>
     <img
       [src]="imageService.getUrl('avatars', user.user.username + '.jpg')"
       class="avatar">
-    <div class="cont"><p>{{user.user.firstName}} {{user.user.lastName}}</p><i class="fas fa-check"></i></div>
+    <div class="cont"><p>{{user.user.firstName}} {{user.user.lastName}}</p></div>
     <div><p>{{user.user.city}}, {{user.user.country}}</p></div>
   </div>
 
@@ -19,13 +19,10 @@
     </div>
   </div>
 
-  <mat-tab-group mat-align-tabs="start">
-    <mat-tab label="Browse">
-      <app-browse></app-browse>
-    </mat-tab>
+  <mat-tab-group  mat-stretch-tabs>
     <mat-tab label="My reviews">
       <div *ngIf="user.user.reviews.length; else noReviews">
-        <!-- <div class="review" *ngFor="let review of user.user.reviews">
+         <div class="review" *ngFor="let review of user.user.reviews">
           <img class="review__img" src="http://localhost:4100/assets/avatars/{{review.username}}.jpg">
           <div>
             <p>❤ {{review.likes}}</p>
@@ -36,7 +33,7 @@
             <p>{{review.title}}</p>
             <p>{{review.content}}</p>
           </div>
-        </div> -->
+        </div> 
         
         <!-- <div class="review" *ngFor="let review of user.user.reviews">
           <div class="user-info">

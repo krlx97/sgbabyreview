@@ -2,7 +2,12 @@ header {
   padding: 10px 15px;
   display: flex;
   flex-direction: row;
-  background: #80cbc4;
+  background:transparent;
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:999;
+
 }
 
 img {

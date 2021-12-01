@@ -3,9 +3,25 @@ form {
   flex-direction: column;
 }
 
-button, input {
-  width: 256px;
-  padding: 0.5em 1em;
-  font-size: 16px;
-  box-sizing: border-box;
+
+.form__submit {
+  width:100%;
+  background: linear-gradient(to left, #8DE5B0, #80CBC4);
+  border-radius:50px;
+  text-align: center;
+  font-size: 14;
+  color:white;
+  padding:17px 0;
+  margin:1em 0;
+}
+
+
+.form-wrapper {
+  padding:2em 1.5em;
+}
+
+.blob_right {
+  position:absolute;
+  right:0;
+  top:0;
 }

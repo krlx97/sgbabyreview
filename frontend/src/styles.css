@@ -27,3 +27,9 @@ button {
   color:white;
   padding: 1em 2em;
 }
+
+h1, p {
+  margin-bottom:0 !important;
+  font-family:Nunito !important;
+}
+

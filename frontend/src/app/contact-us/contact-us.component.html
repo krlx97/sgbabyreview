@@ -1,19 +1,38 @@
-<h3>Contact us</h3>
 
-<form [formGroup]="contactUsForm" (ngSubmit)="onSubmit()">
-  <label for="name">Name: </label>
-  <input id="name" type="text" formControlName="name">
+<div class="wrapper">
+  <img src="assets/contact-us.svg">
+<form>
+  <mat-form-field appearance="standard">
+    <mat-label>Your name</mat-label>
+    <input matInput type="name" placeholder="Email" formControlName="name">
+  </mat-form-field>
+  <mat-form-field appearance="standard">
+    <mat-label>Email</mat-label>
+    <input matInput type="name" placeholder="Email" formControlName="email">
+  </mat-form-field>
+  <mat-form-field appearance="standard">
+    <mat-label>Subject</mat-label>
+    <input matInput type="name" placeholder="Subject" formControlName="subject">
+  </mat-form-field>
 
-  <label for="email">Email: </label>
-  <input id="email" type="text" formControlName="email">
+  <mat-form-field appearance="standard">
+    <mat-label>Leave a comment</mat-label>
+    <textarea matInput placeholder="Ex: I want to ask you about ..."></textarea>
+  </mat-form-field>
 
-  <label for="subject">Subject: </label>
-  <input id="subject" type="text" formControlName="subject">
-
-  <label for="message">Message: </label>
-  <textarea id="message" type="text" formControlName="message"></textarea>
-
-  <button type="submit" [disabled]="!contactUsForm.valid">
-    Submit
+  <button class="form__submit" type="submit">
+    Drop us a message
   </button>
+
 </form>
+
+<div class="alert">
+  <div class="alert-box">
+    <i class="far fa-envelope fa-2x"></i>
+    <p>
+      hello@sgbabyreview.com
+    </p>
+  </div>
+</div>
+
+</div>

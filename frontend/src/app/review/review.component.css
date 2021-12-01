@@ -6,8 +6,10 @@
 .review {
   display:flex;
   flex-direction: column;
-  padding: 1em;
-  /* background-color: #F6F6F6; */
+  padding: 1.5em;
+  background-color: #F6F6F6;
+  border-radius:20px;
+  margin-top:200px !important;
 }
 
 .user-info {
@@ -17,7 +19,7 @@
 }
 
 .username-date {
-  margin-left:10px;
+  font-style: italic;
   
 }
 
@@ -28,26 +30,84 @@
 .username-date p:last-child {
   font-style: italic;
   font-weight: 300;
-  margin-top:2px;
 }
 
 
-.opis {
-    margin-top:17px;
+button {
+  background:none;
 }
+
+h3 {
+  margin:0;
+}
+
 
 .zvezdice {
-    margin-top:17px;
     display:flex;
     flex-direction: row;
+    margin:10px 0;
 }
+
+.zvezdice .fas, .far {
+  font-size:25px;
+  color:#80CBC4;
+}
+
+.zvezdice .fas {
+  color:#80CBC4;
+}
+
+
 
 .zvezdice i {
     margin-left:10px;
 }
 
+.zvezdice i:first-child {
+  margin-left:0;
+}
+
 .opis p {
-    font-size:14px;
-    line-height: 28px;
-    color:#252525;
+    font-size:16px;
+    line-height: 30px;
+    color:#6A6969;
+}
+
+.opis {
+  margin:12px 0;
+}
+
+.user {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.user p {
+  margin-left:10px;
+  font-size:16px !important;
+}
+
+.user p:first-child {
+  font-weight: 700;
+  font-style: normal;
+}
+
+.user h3 {
+  margin-left:10px;
+  font-weight: bold;
+  font-size:16px !important;
+}
+
+.buttons button:not(:first-child):not(:last-child) {
+  margin:0 5px;
+}
+
+.buttons button:last-child {
+  margin-left:10px;
+}
+
+.buttons {
+  margin-top:15px;
 }

@@ -1,6 +1,7 @@
 form {
   display: flex;
   flex-direction: column;
+  padding-top:30px;
 }
 
 button, input {
@@ -8,4 +9,64 @@ button, input {
   padding: 0.5em 1em;
   font-size: 16px;
   box-sizing: border-box;
+}
+
+.form__submit {
+  width:100%;
+  background: linear-gradient(to left, #8DE5B0, #80CBC4);
+  border-radius:50px;
+  text-align: center;
+  font-size: 14;
+  color:white;
+  padding:17px 0;
+  margin:1em 0;
+  -webkit-box-shadow: 1px 5px 20px 5px rgba(148, 148, 148, 0.4);
+  box-shadow: 1px 5px 20px 5px rgba(148, 148, 148, 0.4);
+}
+
+.wrapper {
+  padding:2em 1.5em;
+  padding-top:100px;
+}
+
+.blob_right {
+  position:absolute;
+  top:0;
+  right:0;
+  width:auto !important;
+}
+
+h1 {
+  font-size:18px;
+}
+
+img {
+  width:100%;
+}
+
+.alert .alert-box {
+  
+  margin-top:20px;
+  background: rgba(228, 221, 255, 0.38);
+  border-radius: 20px;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding:40px 0;
+}
+
+.alert .alert-box p {
+  color: #595959;
+  font-size:16px;
+}
+
+.alert .alert-box .purple {
+  color: #8F93EA;
+  font-weight: 700;
+}
+
+i {
+  color:#222222;
+  margin-right:10px;
 }

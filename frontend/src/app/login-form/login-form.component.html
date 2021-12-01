@@ -1,9 +1,10 @@
+<img src="assets/vector-top-left.png" class="blob_right">
 <div class="form-wrapper">
   <h1>
-    Welcome back!
+    Welcome back, user
   </h1>
   <p>
-    Don't have an account? <a routerLink="/register">Register!</a>
+    Don't have an account? <a routerLink="/register"><span>Register!</span></a>
   </p>
 
   <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -26,7 +27,7 @@
     <a class="form__forgot-password" href="#">Forgot password?</a>
 
     <button class="form__submit" type="submit" [disabled]="!form.valid">
-      Submit
+      Log in
     </button>
 
   </form>
@@ -41,4 +42,6 @@
     <img src="assets/social-media/facebook.png" alt="Facebook">
     <img src="assets/social-media/google.png" alt="Google">
   </div>
+
+
 </div>

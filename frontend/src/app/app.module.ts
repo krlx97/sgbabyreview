@@ -27,6 +27,8 @@ import {ReviewComponent} from "./review/review.component";
 import {HeaderComponent} from "./header/header.component";
 import {ProductsComponent} from "./products/products.component";
 import { MenuComponent } from './menu/menu.component';
+import { AddReviewPopupComponent } from './add-review-popup/add-review-popup.component';
+import { BlogPageComponent } from './blog-page/blog-page.component';
 
 @NgModule({
   imports: [
@@ -56,7 +58,9 @@ import { MenuComponent } from './menu/menu.component';
     ReviewComponent,
     HeaderComponent,
     ProductsComponent,
-    MenuComponent
+    MenuComponent,
+    AddReviewPopupComponent,
+    BlogPageComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -17,35 +17,87 @@
 .video-reviews h1 {
   -ms-flex-item-align: start;
       align-self: flex-start;
-  padding-left: 20px;
+  padding-left: 25px;
+  font-size:18px;
+  font-weight: 300;
+  font-family: Nunito;
+  
 }
 
 .video-reviews .container {
-  padding-top: 20px;
+  padding-top:25px;
 }
 
 .video-reviews .container .review:not(:first-child):not(:last-child) {
-  margin: 20px 0;
+  margin: 25px 0;
 }
 
-.video-reviews .container .review {
-  background: #545556;
-  width: 325px;
-  height: 176px;
-  border-radius: 20px;
-  display: Flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  padding: 15px;
-  background: url("/assets/Choosing-the-right-baby-bathtub-for-a-safe-bath-time-1170x628 3.png");
+* {
+  font-family: Nunito;
+  box-sizing: border-box;
+}
+
+.video-reviews {
+  display:flex;
+  flex-direction: column;
+}
+
+.container {
+  display:flex;
+  flex-direction: column;
+  width:100%;
+  padding:0 25px;
+
+}
+
+.review {
+  background:url("/assets/video-1.png");
   background-size: cover;
+  background-position: center;
+  width:100%;
+  height:220px;
+  border-radius: 20px;
+  
+}
+
+.review:last-child {
+  background:url("/assets/video-2.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.review:first-child {
+  background:url("/assets/video-3.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.reviewWrapper {
+  width:100%;
+  height:220px;
+  background:rgba(32, 32, 32, 0.4);
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 20px;
+  padding:1em;
+}
+
+.reviewWrapper {
+  width:100%;
 }
 
 .video-reviews .container .review p {
   color: white;
+  font-size:18px;
+  margin-top:0.2em;
 }
+
+
+.video-reviews .container .review p:first-child {
+  font-weight: bold;
+}
+
+
+
+

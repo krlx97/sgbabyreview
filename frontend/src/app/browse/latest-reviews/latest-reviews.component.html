@@ -3,6 +3,7 @@
     Latest reviews
   </h1>
   <div class="scroll-container">
+
     <div
       *ngFor="let recentReview of recentReviews"
       class="card"
@@ -13,18 +14,40 @@
         [src]="imageService.getUrl('products', recentReview.urls.product + '.png')">
 
       <a routerLink="/products/{{recentReview.urls.category}}/{{recentReview.urls.subcategory}}/{{recentReview.urls.product}}/review/{{recentReview.urls.review}}">
-        {{recentReview.title}}
+        {{recentReview.title}} (41)
       </a>
       <div class="zvezdice">
-        <img src="assets/star.png">
-        <img src="assets/star.png">
-        <img src="assets/star.png">
-        <img src="assets/star.png">
-        <img src="assets/star.png">
+        <p style="opacity:0.5; font-style: italic;">placeholder</p>
       </div>
       <div class="content">
         <p>{{recentReview.content}}</p>
       </div>
+
     </div>
-  </div>
-</div>
+
+    <div
+      *ngFor="let recentReview of recentReviews"
+      class="card"
+      (click)="onShare(recentReview)">
+
+      <img
+        class="review__img"
+        [src]="imageService.getUrl('products', recentReview.urls.product + '.png')">
+
+      <a routerLink="/products/{{recentReview.urls.category}}/{{recentReview.urls.subcategory}}/{{recentReview.urls.product}}/review/{{recentReview.urls.review}}">
+        {{recentReview.title}} (41)
+      </a>
+      <div class="zvezdice">
+        <p style="opacity:0.5; font-style: italic;">placeholder</p>
+      </div>
+      <div class="content">
+        <p>{{recentReview.content}}</p>
+      </div>
+
+    </div>
+
+    
+      
+
+    </div>
+
