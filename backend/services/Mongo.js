@@ -72,9 +72,9 @@ class Mongo {
     let updateProfile;
 
     try {
-      // console.log(await this.#db.collection("recentReviews").count());
-
-      // await this.#db.collection("recentReviews").deleteOne({});
+      if (await this.#db.collection("recentReviews").count() >= 8) {
+        await this.#db.collection("recentReviews").deleteOne({});
+      }
 
       await this.#db.collection("recentReviews").insertOne({
         urls: {...urls, review},

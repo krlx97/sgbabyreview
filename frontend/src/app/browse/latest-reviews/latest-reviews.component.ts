@@ -17,7 +17,7 @@ export class LatestReviewsComponent implements OnInit {
 
   public ngOnInit(): void {
     this._ioService.on("getRecentReviews", (params: any) => {
-      this.recentReviews = params.recentReviews;
+      this.recentReviews = params.recentReviews.reverse();
 
       console.log(this.recentReviews);
     });

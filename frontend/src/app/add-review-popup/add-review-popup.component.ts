@@ -25,26 +25,31 @@ export class AddReviewPopupComponent implements OnInit {
   isEditable = false;
 
   public readonly writeReviewForm = this._formBuilder.group({
+    productUrl: [""],
     stars: [5],
     title: [""],
     content: [""],
   });
 
-  public readonly form = this._formBuilder.group({
+  public readonly registerForm = this._formBuilder.group({
+    firstName: ["", [Validators.required]],
+    lastName: ["", [Validators.required]],
     email: ["", [Validators.required, Validators.email]],
-    password: ["", [Validators.required, Validators.minLength(6)]]
+    username: ["", [Validators.required]],
+    password: ["", [Validators.required, Validators.minLength(6)]],
+    repeatPassword: ["", [Validators.required, Validators.minLength(6)]],
   });
 
   public onReviewSubmit (): void {
     const {category, subcategory, product} = this._routerService.urls;
     const {username} = this.userService.user;
-    const {stars, title, content} = this.writeReviewForm.value;
+    const {productUrl, stars, title, content} = this.writeReviewForm.value;
 
     this._io.emit("writeReview", {
       urls: {
         category: "bath_tubs",
         subcategory: "bath_tubs_and_accessories",
-        product: "skip_hop_moby_smart_sling_3_stage_tub"
+        product: productUrl
       },
       username,
       stars,
@@ -53,33 +58,27 @@ export class AddReviewPopupComponent implements OnInit {
     });
   }
 
-  public onSubmit (): void {
-    this._io.emit("login", this.form.value);
-  }
-
   public onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}): void {
-    alert($event.newValue);
     this.writeReviewForm.controls.stars.setValue($event.newValue);
   }
 
   public loginAndWriteReview (): void {
-    const {stars, title, content} = this.writeReviewForm.value;
-    const {email, password} = this.form.value;
+    const {productUrl, stars, title, content} = this.writeReviewForm.value;
 
     this._io.emit("loginAndWriteReview", {
       review: {
         urls: {
           category: "bath_tubs",
           subcategory: "bath_tubs_and_accessories",
-          product: "skip_hop_moby_smart_sling_3_stage_tub"
+          product: productUrl
         },
-        username: "",
+        username: this.registerForm.value.username,
         stars,
         title,
         content
       },
-      user: {email, password}
-    })
+      user: this.registerForm.value
+    });
   }
 
   ngOnInit (): void {

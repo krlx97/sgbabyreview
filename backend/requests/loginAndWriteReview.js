@@ -1,27 +1,45 @@
 const loginAndWriteReview = async (app, params) => {
   const {crypto, io, mongo} = app;
   const {review, user} = params;
-  const {email, password} = user;
+  const {firstName, lastName, email, username, password} = user;
 
-  const _user = await mongo.findUser({email});
+  const [userByEmail, userByUsername] = await Promise.all([
+    mongo.findUser({email}),
+    mongo.findUser({username})
+  ]);
 
-  if (!_user) {
-    io.notification("User not found.");
+  if (userByEmail) {
+    io.notification("Email taken.");
     return;
   }
 
-  const isVerified = await crypto.verifyPassword(password, _user.password);
-
-  if (!isVerified) {
-    io.notification("Wrong password.");
+  if (userByUsername) {
+    io.notification("Username taken.");
     return;
   }
 
-  review.username = _user.username;
+  const hashedPassword = await crypto.hashPassword(password);
+
+  if (!hashedPassword) { return; }
+
+  const inserted = await mongo.insertUser({
+    firstName,
+    lastName,
+    email,
+    username,
+    password: hashedPassword,
+    referals: []
+  });
+
+  if (!inserted.acknowledged) { return; }
 
   const updated = await mongo.insertReview(review);
 
   if (!updated) { return; }
+
+  const _user = await mongo.findUser({username});
+
+  if (!_user) { return; }
 
   const {_id} = _user;
   const id = _id.toHexString();

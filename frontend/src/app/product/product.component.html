@@ -7,10 +7,9 @@
 
   <div class="product__content">
     <h2>{{product.title}}</h2>
-  
+
     <!-- <a routerLink="../{{product.category.url}}"><i>{{product.category.title}}</i></a> -->
-  
-    
+
     <div class="stars">
       <star-rating
         [value]="averageStars"
@@ -19,11 +18,11 @@
         uncheckedcolor="grey"
         size="24px"
         [readonly]="true">
-      </star-rating> {{averageStars.toFixed(2)}} / based on {{product.reviews.length}} reviews.
+      </star-rating> {{averageStars}} / based on {{product.reviews.length}} reviews.
     </div>
-  
+
     <p>{{product.content}}</p>
-  
+
     <a [href]="product.details.url">
      <button class="btn--fill">WHERE TO BUY</button>
     </a>

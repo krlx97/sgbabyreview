@@ -2,7 +2,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Select product</mat-label>
-    <mat-select name="food">
+    <mat-select name="product" formControlName="productUrl">
 
       <mat-option value="skip_hop_moby_smart_sling_3_stage_tub">
         <img class="product__img" [src]="imageService.getUrl('products', 'skip_hop_moby_smart_sling_3_stage_tub' + '.png')">
@@ -42,10 +42,6 @@
     <textarea matInput placeholder="Content" formControlName="content"></textarea>
   </mat-form-field>
 
-  <code>
-    {{writeReviewForm.value | json}}
-  </code>
-
   <button type="submit">SUBMIT</button>
 
 </form>
@@ -60,7 +56,7 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Select product</mat-label>
-          <mat-select name="food">
+          <mat-select name="product" formControlName="productUrl">
       
             <mat-option value="skip_hop_moby_smart_sling_3_stage_tub">
               <img class="product__img" [src]="imageService.getUrl('products', 'skip_hop_moby_smart_sling_3_stage_tub' + '.png')">
@@ -105,30 +101,43 @@
       </form>
     </mat-step>
 
-    <mat-step [stepControl]="form">
-      <form class="form" [formGroup]="form">
-        <ng-template matStepLabel>Login</ng-template>
-
+    <mat-step [stepControl]="registerForm">
+      <form [formGroup]="registerForm">
+        <mat-form-field appearance="standard">
+          <mat-label>First name</mat-label>
+          <input matInput type="text" placeholder="First name" formControlName="firstName">
+        </mat-form-field>
+    
+        <mat-form-field appearance="standard">
+          <mat-label>Last name</mat-label>
+          <input matInput type="text" placeholder="Last name" formControlName="lastName">
+        </mat-form-field>
+    
         <mat-form-field appearance="standard">
           <mat-label>Email</mat-label>
           <input matInput type="email" placeholder="Email" formControlName="email">
+        </mat-form-field>
     
-          <!-- <mat-error *ngIf="isEmailInvalid">Invalid email</mat-error>
-          <mat-error *ngIf="isEmptyFormField(email)">Field can't be empty</mat-error> -->
+        <mat-form-field appearance="standard">
+          <mat-label>Username</mat-label>
+          <input matInput type="text" placeholder="Username" formControlName="username">
         </mat-form-field>
     
         <mat-form-field appearance="standard">
           <mat-label>Password</mat-label>
           <input matInput type="password" placeholder="Password" formControlName="password">
-          <!-- <mat-error *ngIf="isEmptyFormField(password)">Field can't be empty</mat-error>
-          <mat-error *ngIf="!isLength(password, 6)">Minimum 6 characters</mat-error> -->
         </mat-form-field>
     
-        <button class="form__submit" [disabled]="!form.valid" (click)="loginAndWriteReview()">
-          Log in
-        </button>
+        <mat-form-field appearance="standard">
+          <mat-label>Repeat password</mat-label>
+          <input matInput type="password" placeholder="Repeat password" formControlName="repeatPassword">
+        </mat-form-field>
     
+        <button class="form__submit" [disabled]="!registerForm.valid" (click)="loginAndWriteReview()">
+          Register & Post
+        </button>
       </form>
+     
     </mat-step>
 
   </mat-stepper>

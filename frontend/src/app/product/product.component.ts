@@ -76,8 +76,8 @@ export class ProductComponent implements OnInit, OnDestroy {
 
       this.product = product;
 
-      const totalStars = stars.reduce((previous, star) => previous + star);
-      const starsVal = stars.reduce((prev, star, i) => star * (i + 1));
+      const totalStars = stars.reduce((sum, star) => sum + star);
+      const starsVal = stars.reduce((sum, star, i) => sum + (star * (i + 1)));
 
       this.oneWidth = 100 / totalStars * stars[0];
       this.twoWidth = 100 / totalStars * stars[1];
