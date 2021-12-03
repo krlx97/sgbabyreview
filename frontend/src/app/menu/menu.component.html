@@ -1,7 +1,7 @@
-<div class="menu ">
+<div class="menu">
   <div class="menu-wrapper">
     <div class="sub">
-      <a routerLink="/home"><i class="fas fa-igloo"></i></a>
+      <a [routerLinkActive]="'is-active'" routerLink="/home"><i class="fas fa-igloo"></i></a>
     </div>
   
     <div class="sub">
@@ -21,7 +21,7 @@
     </div>
   
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>Community</button>
+      <button mat-menu-item>Sign out</button>
       <button mat-menu-item routerLink="/blog">Blog</button>
       <button mat-menu-item routerLink="/contact_us">Contact us</button>
       <button mat-menu-item routerLink="/about_us">About us</button>

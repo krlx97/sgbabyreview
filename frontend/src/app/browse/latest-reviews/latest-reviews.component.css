@@ -6,9 +6,7 @@
 .reviews h1 {
   margin-bottom: 20px;
   margin-left:25px;
-  font-size:18px;
-
-
+  font-size:16px;
 }
 
 
@@ -42,9 +40,8 @@ a {
   
 }
 
-.review__img {
-  height:100px;
-  margin-bottom:25px;
+.review__img {  
+  height:150px;
 }
 
 .reviews .scroll-container .card:first-child {
@@ -53,26 +50,36 @@ a {
 
 .reviews .scroll-container .card {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
   width: auto;
   -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  border-radius: 20px;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border-radius: 15px;
   background: #F6F6F6;
-  padding: 20px;
   margin-left:30px;
   -webkit-box-shadow: 3px 3px 24px 1px rgba(161, 161, 161, 0.3);
   box-shadow: 3px 3px 24px 1px rgba(161, 161, 161, 0.3);
   scroll-snap-align: center;
+}
+
+.card .top {
+  display:flex;
+  justify-content: center;
+  width:100%;
+  padding-top:1em;  
+}
+
+.card .bottom {
+  padding:2em 1.2em 1em 1.2em;
 }
 
 .reviews .scroll-container .card .zvezdice {

@@ -6,12 +6,17 @@ p {
 p a {
   /* text-decoration: none; */
   display: block;
-  color: white;
+  color: black;
+  font-family: nunito;
   height: 15vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #a0a0a0;
   border-radius: var(--border-radius);
+  text-decoration: none;
+}
+
+div {
+  padding-top:2em;
 }

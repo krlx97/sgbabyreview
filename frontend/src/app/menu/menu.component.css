@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: space-around;
   background-color:rgba(255, 255, 255, 1);
-  border-radius: 15% 15% 0 0;
+  border-radius:15px 15px 0 0;
   /* border: 2px solid red; */
   box-sizing: border-box;
 }
@@ -51,6 +51,3 @@ i {
   font-size:20px;
 }
 
-.is-active {
-  color:#222222;
-}

@@ -1,6 +1,6 @@
 <form *ngIf="userService.isLoggedIn; else withLogin" [formGroup]="writeReviewForm" (ngSubmit)="onReviewSubmit()">
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="standard">
     <mat-label>Select product</mat-label>
     <mat-select name="product" formControlName="productUrl">
 
@@ -22,12 +22,16 @@
     </mat-select>
   </mat-form-field>
 
+  <div>
+
+  </div>
+
   <star-rating
     [value]="5"
     [totalstars]="5"
     checkedcolor="#80CBC4"
     uncheckedcolor="grey"
-    size="16px"
+    size="32px"
     [readonly]="false"
     (rate)="onRate($event)">
   </star-rating>
@@ -49,12 +53,12 @@
 <ng-template #withLogin>
   <mat-stepper labelPosition="bottom">
 
-    <mat-step [stepControl]="writeReviewForm">
+    <mat-step [stepControl]="writeReviewForm" [completed]="false">
 
       <form [formGroup]="writeReviewForm">
-        <ng-template matStepLabel>Review</ng-template>
+       
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="standard">
           <mat-label>Select product</mat-label>
           <mat-select name="product" formControlName="productUrl">
       
@@ -81,7 +85,7 @@
           [totalstars]="5"
           checkedcolor="#80CBC4"
           uncheckedcolor="grey"
-          size="16px"
+          size="32px"
           [readonly]="false"
           (rate)="onRate($event)">
         </star-rating>

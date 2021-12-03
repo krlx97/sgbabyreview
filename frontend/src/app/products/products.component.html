@@ -1,11 +1,20 @@
 <div class="products">
   <div class="product" *ngFor="let product of products">
 
-    <img
-      class="product__img"
-      [src]="imageService.getUrl('products', product.url + '.png')">
+    <div class="productWrapper">
+      <div class="top"> <img class="product__img" [src]="imageService.getUrl('products', product.url + '.png')"></div>
+      <div class="bottom">
+        <a [routerLink]="product.url">{{product.title}}</a>
+        <div class="stars">
+          <p>stars placeholder</p>
+        </div>
+        <div class="sub">
+          <p>//5reviews</p>
+          <p>3.51/5</p>
+        </div>
+      </div>
 
-    <a [routerLink]="product.url">{{product.title}}</a>
+    </div>
 
   </div>
 </div>

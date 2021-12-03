@@ -1,5 +1,5 @@
 const settings = {
-  production: true,
+  production: false,
   productionUrl: "https://sgbabyreview.herokuapp.com",
   testUrl: "http://localhost:4100"
 };

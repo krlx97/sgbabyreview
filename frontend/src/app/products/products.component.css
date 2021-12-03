@@ -1,15 +1,46 @@
 .products {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap ;
+  height:auto;
+  padding-top:5em;
+
 }
 
 .product {
-  width: 256px;
-  height: auto;
-  margin: 1em;
-  border: 1px solid red;
+  width: 50%;
+  height:auto;
+ 
 }
 
 .product__img {
   height: auto;
-  width: 100%;
+  height:100px;
+}
+
+.productWrapper {
+
+  height:100%;
+  padding:20px;
+
+}
+
+a {
+  font-size:16px;
+  text-decoration: none;
+  color:black;
+  font-family: Nunito;
+}
+
+.product .sub {
+  display:flex;
+  flex-direction: row;
+}
+
+.bottom .stars {
+  margin:2px 0;
+}
+
+.sub p:last-child {
+  margin-left:5px;
 }

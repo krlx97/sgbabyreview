@@ -1,11 +1,9 @@
 :root {
   --border-radius: 48px;
-
   --spacing-sm: 0.7em;
   --spacing-md: 0.8em;
   --spacing-lg: 1em;
   --spacing-xlg: 1.3em;
-
   --cyan: #80CBC4;
 }
 
@@ -35,4 +33,10 @@ h1, p {
 
 .fa-igloo {
   color:black;
+}
+
+.mat-stepper-horizontal .mat-horizontal-stepper-header {
+
+  padding:5px;
+  padding-top:25px;
 }

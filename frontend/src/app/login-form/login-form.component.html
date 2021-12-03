@@ -1,10 +1,10 @@
 <img src="assets/vector-top-left.png" class="blob_right">
 <div class="form-wrapper">
   <h1>
-    Welcome back, user
+    Welcome back!
   </h1>
   <p>
-    Don't have an account? <a routerLink="/register"><span>Register!</span></a>
+    Don't have an account? <a routerLink="/register"><span>Register here</span></a>
   </p>
 
   <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -35,12 +35,12 @@
   <br>
 
   <div class="or">
-    <div class="or__text">Or</div>
+    <div class="or__text"><p>Or</p></div>
   </div>
 
   <div class="login-google">
-    <img src="assets/social-media/facebook.png" alt="Facebook">
-    <img src="assets/social-media/google.png" alt="Google">
+    <i class="fab fa-facebook-square fa-2x"></i>
+    <i class="fab fa-google fa-2x"></i>
   </div>
 
 
