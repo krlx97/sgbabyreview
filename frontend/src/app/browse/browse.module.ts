@@ -1,6 +1,7 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
+import {RatingModule} from 'ng-starrating';
 
 import {BrowseComponent} from "./browse.component";
 import {CategoriesComponent} from "./categories/categories.component";
@@ -19,7 +20,7 @@ import { MaterialModule } from "../material/material.module";
     LatestReviewsComponent,
     VideoReviewsComponent
   ],
-  imports: [CommonModule, RouterModule, MaterialModule],
+  imports: [CommonModule, RouterModule, MaterialModule, RatingModule],
   exports: [BrowseComponent]
 })
 export class BrowseModule {}

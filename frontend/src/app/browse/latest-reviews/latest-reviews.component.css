@@ -52,7 +52,7 @@ a {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
-  width: auto;
+  width: 100%;
   -webkit-box-align: start;
   -ms-flex-align: start;
   align-items: flex-start;
@@ -82,8 +82,10 @@ a {
   padding:2em 1.2em 1em 1.2em;
 }
 
-.reviews .scroll-container .card .zvezdice {
-  margin: 7px 0;
+.stars {
+  margin: var(--spacing-sm) 0;
+  display: flex;
+  align-items: center;
 }
 
 .reviews .scroll-container .card h1 {

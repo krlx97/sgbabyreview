@@ -5,6 +5,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {RouterModule} from "@angular/router";
 import {RatingModule} from 'ng-starrating';
+import { NgxSocialShareModule } from 'ngx-social-share';
 import {AppRoutingModule} from "./app-routing.module";
 
 import {BrowseModule} from "./browse/browse.module";
@@ -38,6 +39,7 @@ import { BlogPageComponent } from './blog-page/blog-page.component';
     BrowserAnimationsModule,
     RouterModule,
     RatingModule,
+    NgxSocialShareModule,
     AppRoutingModule,
     BrowseModule,
     FooterModule,

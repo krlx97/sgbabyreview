@@ -1,3 +1,7 @@
-<header>
-  <img routerLink="/home" src="assets/logo.png">
+<header class="header" [ngClass]="isShrunk ? 'header--shrunk' : ''">
+  <img
+    class="header__img"
+    [ngClass]="isShrunk ? 'header__img--shrunk' : ''"
+    routerLink="/home"
+    src="assets/logo.png"/>
 </header>

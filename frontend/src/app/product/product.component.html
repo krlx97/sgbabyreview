@@ -1,5 +1,4 @@
 
-
 <div *ngIf="product; else fetching">
   <div class="hero">
     <img class="product__img" [src]="imageService.getUrl('products', product.url + '.png')">
@@ -7,8 +6,6 @@
 
   <div class="product__content">
     <h2>{{product.title}}</h2>
-
-    <!-- <a routerLink="../{{product.category.url}}"><i>{{product.category.title}}</i></a> -->
 
     <div class="stars">
       <star-rating
@@ -27,7 +24,6 @@
      <button class="btn--fill">WHERE TO BUY</button>
     </a>
   </div>
-
 
   <mat-tab-group mat-stretch-tabs>
 
@@ -71,32 +67,22 @@
           </div>
         </div>
 
-        <app-review *ngFor="let review of product.reviews" [review]="review"></app-review>
-         <!-- <div class="review" *ngFor="let review of product.reviews">
-          <div class="user-info">
-              <img class="review__img" src="http://localhost:4100/assets/avatars/{{review.username}}.jpg">
-              <div class="username-date">
-                <h3>{{review.username}}</h3>
-                <p>{{review.posted | date: 'mediumDate'}}</p>
-                 <button>❤ {{review.likes.length}}</button>
-                
-              </div>
-          </div>
-      
-          <div class="zvezdice">
-            <i class="far fa-heart"></i>
-            <i class="far fa-heart"></i>
-            <i class="far fa-heart"></i>
-            <i class="far fa-heart"></i>
-            <i class="far fa-heart"></i>
-            {{review.stars}}
-          </div>
-      
-          <div class="opis">
-            <p>{{review.title}}</p>
-            <p>{{review.content}}</p>
-          </div>
-        </div>  -->
+        <button [matMenuTriggerFor]="sortMenu">Sort by</button>
+        <mat-menu #sortMenu="matMenu">
+          <button mat-menu-item (click)="sortDateN2O()">Date (Oldest to Newest)</button>
+          <button mat-menu-item (click)="sortDateO2N()">Date (Newest to Oldest)</button>
+        </mat-menu>
+        <button [matMenuTriggerFor]="filterMenu">Filter by</button>
+        <mat-menu #filterMenu="matMenu">
+          <button mat-menu-item (click)="sortStars(1)">1 star</button>
+          <button mat-menu-item (click)="sortStars(2)">2 star</button>
+          <button mat-menu-item (click)="sortStars(3)">3 star</button>
+          <button mat-menu-item (click)="sortStars(4)">4 star</button>
+          <button mat-menu-item (click)="sortStars(5)">5 star</button>
+        </mat-menu>
+        <button (click)="sortedReviews = product.reviews">Clear filters</button>
+
+        <app-review *ngFor="let review of sortedReviews" [review]="review"></app-review>
       </div>
 
       <ng-template #noReviews>

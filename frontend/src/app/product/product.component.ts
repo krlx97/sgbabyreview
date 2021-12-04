@@ -30,6 +30,17 @@ export class ProductComponent implements OnInit, OnDestroy {
     content: [""],
   });
 
+  public sortedReviews: any[] = [];
+
+  public sortDateN2O (): void {
+    this.sortedReviews = this.product.reviews.sort((a, b) => new Date(b.posted).valueOf() - new Date(a.posted).valueOf());
+  }
+  public sortDateO2N (): void {
+    this.sortedReviews = this.product.reviews.sort((a, b) => new Date(a.posted).valueOf() - new Date(b.posted).valueOf());
+  }
+  public sortStars (star: number): void {
+    this.sortedReviews = this.product.reviews.filter((review) => review.stars === star);
+  }
 
   //======
   public oneWidth = 0;
@@ -74,7 +85,10 @@ export class ProductComponent implements OnInit, OnDestroy {
       const {product} = params;
       const {stars} = product;
 
+      
       this.product = product;
+
+      this.sortedReviews = this.product.reviews;
 
       const totalStars = stars.reduce((sum, star) => sum + star);
       const starsVal = stars.reduce((sum, star, i) => sum + (star * (i + 1)));

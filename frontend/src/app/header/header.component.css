@@ -1,15 +1,26 @@
-header {
-  padding: 10px 15px;
-  display: flex;
-  flex-direction: row;
-  background:transparent;
-  position:fixed;
-  width:100%;
-  top:0;
-  z-index:999;
-
+.header, .header__img {
+  transition: height 225ms ease-in-out;
 }
 
-img {
-  /* width: 64px; */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  padding: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  background: transparent;
+  z-index: 10;
+}
+.header--shrunk {
+  height: 32px;
+}
+
+.header__img {
+  height: 64px;
+}
+.header__img--shrunk {
+  height: 32px;
 }

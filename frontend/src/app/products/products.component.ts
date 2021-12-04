@@ -18,6 +18,19 @@ export class ProductsComponent implements OnDestroy, OnInit {
     public readonly imageService: ImageService
   ) {}
 
+  public getStars (product): number {
+    const totalStars = product.stars.reduce((sum, star) => sum + star);
+    const starsVal = product.stars.reduce((sum, star, i) => sum + (star * (i + 1)));
+    console.log(totalStars, starsVal);
+
+    if (totalStars && starsVal) {
+      return starsVal / totalStars;
+    } else {
+      return 0
+    }
+    // return starsVal / totalStars === NaN ? 0 : starsVal / totalStars;
+  }
+
   public ngOnInit (): void {
     const {_ioService, _routerService} = this;
     const {subcategory} = _routerService.urls;

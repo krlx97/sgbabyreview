@@ -53,14 +53,26 @@ class Mongo {
 
   async getRecentReviews () {
     let documents;
+    const mutatedDocuments = [];
 
     try {
       documents = await this.#db.collection("recentReviews").find().toArray();
+
+      for (const document of documents) {
+        const product = await this.#db.collection(document.urls.subcategory).findOne({url: document.urls.product});
+
+        mutatedDocuments.push({
+          ...document,
+          productTitle: product.title,
+          stars: product.stars,
+          totalReviews: product.reviews.length
+        });
+      }
     } catch (error) {
       this.#handleError(error);
     }
 
-    return documents ? documents : undefined;
+    return mutatedDocuments.length ? mutatedDocuments : undefined;
   }
 
   async insertReview (params) {

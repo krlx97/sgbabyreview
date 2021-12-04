@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { StarRatingComponent } from 'ng-starrating';
 import { ImageService } from '../services/image.service';
 import { IoService } from '../services/io/io.service';
@@ -23,10 +23,11 @@ export class AddReviewPopupComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   isEditable = false;
+  show = false;
 
   public readonly writeReviewForm = this._formBuilder.group({
     productUrl: [""],
-    stars: [5],
+    stars: [1],
     title: [""],
     content: [""],
   });
@@ -39,6 +40,17 @@ export class AddReviewPopupComponent implements OnInit {
     password: ["", [Validators.required, Validators.minLength(6)]],
     repeatPassword: ["", [Validators.required, Validators.minLength(6)]],
   });
+
+  public isLength (field: FormControl, length: number): boolean {
+    return field.value && field.value < length && field.touched;
+  }
+
+  public get firstName(): FormControl { return this.registerForm.get("firstName") as FormControl; }
+  public get lastName(): FormControl { return this.registerForm.get("lastName") as FormControl; }
+  public get email(): FormControl { return this.registerForm.get("email") as FormControl; }
+  public get username(): FormControl { return this.registerForm.get("username") as FormControl; }
+  public get password(): FormControl { return this.registerForm.get("password") as FormControl; }
+  public get repeatPassword(): FormControl { return this.registerForm.get("repeatPassword") as FormControl; }
 
   public onReviewSubmit (): void {
     const {category, subcategory, product} = this._routerService.urls;

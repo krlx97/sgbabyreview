@@ -1,8 +1,10 @@
 :root {
   --border-radius: 48px;
+
   --spacing-sm: 0.7em;
   --spacing-md: 0.8em;
   --spacing-lg: 1em;
+
   --spacing-xlg: 1.3em;
   --cyan: #80CBC4;
 }
