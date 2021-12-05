@@ -147,15 +147,15 @@ class Mongo {
         url: productUrl
       });
 
-      const review = product.reviews.find((review) => review.url === reviewUrl);
+      const review = product.reviews.find((x) => x.urls.review === reviewUrl);
       const i = product.reviews.indexOf(review);
 
-      const user = await this.#db.collection("users").findOne({username: product.reviews[i].username});
+      const user = await this.#db.collection("users").findOne({username: review.username});
 
-      const userReview = user.reviews.find((review) => review.url === reviewUrl);
+      const userReview = user.reviews.find((x) => x.urls.review === reviewUrl);
       const k = user.reviews.indexOf(userReview);
 
-      if (product.reviews[i].likes.includes(username)) {
+      if (review.likes.includes(username)) {
         updated = await this.#db.collection(subcategoryUrl).updateOne({
           url: productUrl
         }, {
@@ -164,9 +164,9 @@ class Mongo {
           }
         });
 
-        await this.#db.collection("users").updateOne({username: product.reviews[i].username}, {
-          $inc: {
-            [`reviews.${k}.likes`]: -1
+        await this.#db.collection("users").updateOne({username: review.username}, {
+          $pull: {
+            [`reviews.${k}.likes`]: username
           }
         });
       } else {
@@ -178,9 +178,9 @@ class Mongo {
           }
         });
 
-        await this.#db.collection("users").updateOne({username: product.reviews[i].username}, {
-          $inc: {
-            [`reviews.${k}.likes`]: 1
+        await this.#db.collection("users").updateOne({username: review.username}, {
+          $push: {
+            [`reviews.${k}.likes`]: username
           }
         });
       }

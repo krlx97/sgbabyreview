@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
 
   public ngOnInit (): void {
     this._ioService.on("notification", (params) => {
-      this._matSnackBar.open(params.msg, "X");
+      this._matSnackBar.open(params.msg, "", {duration: 5000});
     });
 
     this._ioService.on("getCategories", (params) => {
