@@ -53,8 +53,11 @@ main {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: white;
+    background: linear-gradient(to left, #8DE5B0, #80CBC4);
     z-index: 10000;
     font-size: 5rem;
+    font-weight: bold;
+    color:white;
+    font-family:Nunito;
   }
 }

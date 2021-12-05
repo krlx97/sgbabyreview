@@ -13,9 +13,9 @@
         [totalstars]="5"
         checkedcolor="#80CBC4"
         uncheckedcolor="grey"
-        size="24px"
+        size="29px"
         [readonly]="true">
-      </star-rating> {{averageStars}} / based on {{product.reviews.length}} reviews.
+      </star-rating> <p>{{averageStars}} / based on {{product.reviews.length}} reviews.</p>
     </div>
 
     <p>{{product.content}}</p>
@@ -31,35 +31,35 @@
       <div *ngIf="product.reviews.length; else noReviews">
         <div class="ratings">
           <div class="barss">
-            5 Stars
+            <p>5 stars</p>
             <div class="meter ">
               <div class="meter__progress" [style.width.%]="fiveWidth"></div>
             </div>
             {{product.stars[4]}}
           </div>
           <div class="barss">
-            4 Stars
+            <p>4 stars</p>
             <div class="meter ">
               <div class="meter__progress" [style.width.%]="fourWidth"></div>
             </div>
             {{product.stars[3]}}
           </div>
           <div class="barss">
-            3 Stars
+            <p>3 stars</p>
             <div class="meter ">
               <div class="meter__progress" [style.width.%]="threeWidth"></div>
             </div>
             {{product.stars[2]}}
           </div>
           <div class="barss">
-            2 Stars
+            <p>2 stars</p>
             <div class="meter ">
               <div class="meter__progress" [style.width.%]="twoWidth"></div>
             </div>
             {{product.stars[1]}}
           </div>
           <div class="barss">
-            1 Stars
+            <p>1 stars</p>
             <div class="meter ">
               <div class="meter__progress" [style.width.%]="oneWidth"></div>
             </div>
@@ -67,12 +67,13 @@
           </div>
         </div>
 
-        <button [matMenuTriggerFor]="sortMenu">Sort by</button>
-        <mat-menu #sortMenu="matMenu">
+        <div class="sort">
+          <button [matMenuTriggerFor]="sortMenu" class="sortButton">Sort by</button>
+          <mat-menu #sortMenu="matMenu">
           <button mat-menu-item (click)="sortDateN2O()">Date (Oldest to Newest)</button>
           <button mat-menu-item (click)="sortDateO2N()">Date (Newest to Oldest)</button>
         </mat-menu>
-        <button [matMenuTriggerFor]="filterMenu">Filter by</button>
+        <button [matMenuTriggerFor]="filterMenu" class="sortButton">Filter by</button>
         <mat-menu #filterMenu="matMenu">
           <button mat-menu-item (click)="sortStars(1)">1 star</button>
           <button mat-menu-item (click)="sortStars(2)">2 star</button>
@@ -80,9 +81,11 @@
           <button mat-menu-item (click)="sortStars(4)">4 star</button>
           <button mat-menu-item (click)="sortStars(5)">5 star</button>
         </mat-menu>
-        <button (click)="sortedReviews = product.reviews">Clear filters</button>
+        <button (click)="sortedReviews = product.reviews" class="sortButton">Clear filters</button>
+        </div>
 
         <app-review *ngFor="let review of sortedReviews" [review]="review"></app-review>
+        <div style="padding-bottom:2em;"></div>
       </div>
 
       <ng-template #noReviews>

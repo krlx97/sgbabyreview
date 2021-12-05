@@ -1,5 +1,5 @@
 .reviews {
-  padding-top: 30px;
+  padding-top:30px;
 
 }
 
@@ -41,18 +41,18 @@ a {
 }
 
 .review__img {  
-  height:150px;
+  height:140px;
 }
 
 .reviews .scroll-container .card:first-child {
-  margin-left:25px;
+margin-left:25px;
 }
 
 .reviews .scroll-container .card {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
-  width: 100%;
+  width:80%;
   -webkit-box-align: start;
   -ms-flex-align: start;
   align-items: flex-start;
@@ -65,11 +65,13 @@ a {
   flex-direction: column;
   border-radius: 15px;
   background: #F6F6F6;
-  margin-left:30px;
   -webkit-box-shadow: 3px 3px 24px 1px rgba(161, 161, 161, 0.3);
   box-shadow: 3px 3px 24px 1px rgba(161, 161, 161, 0.3);
   scroll-snap-align: center;
+  margin-left:25px;
 }
+
+
 
 .card .top {
   display:flex;
@@ -78,8 +80,18 @@ a {
   padding-top:1em;  
 }
 
+.card .bottom h1 {
+  line-height: 20px;
+  font-weight: bold;
+}
+
+.card .bottom h1 span {
+  font-weight: 400;
+  color:#6A6969;
+}
+
 .card .bottom {
-  padding:2em 1.2em 1em 1.2em;
+  padding:2em 1em 1em 1em;
 }
 
 .stars {
@@ -105,7 +117,6 @@ a {
 }
 
 .reviews .scroll-container .card p {
-  width: 30ch;
   font-weight: 300;
 }
 

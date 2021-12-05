@@ -4,7 +4,7 @@
   </h1>
   <div class="scroll-container">
 
-    <div
+    <div routerLink="/products/{{recentReview.urls.category}}/{{recentReview.urls.subcategory}}/{{recentReview.urls.product}}"
       *ngFor="let recentReview of recentReviews"
       class="card"
       (click)="onShare(recentReview)">
@@ -12,9 +12,9 @@
         <img class="review__img" [src]="imageService.getUrl('products', recentReview.urls.product + '.png')">
       </div>
       <div class="bottom">
-        <a routerLink="/products/{{recentReview.urls.category}}/{{recentReview.urls.subcategory}}/{{recentReview.urls.product}}">
-          {{recentReview.productTitle}} ({{recentReview.totalReviews}})
-        </a>
+        <h1 >
+          {{recentReview.productTitle}} {{getStars(recentReview)}} <span>- {{recentReview.totalReviews}} reviews</span> 
+        </h1>
         <!-- <p>{{recentReview.title}}</p> -->
         <div class="stars">
           <star-rating
@@ -25,7 +25,7 @@
             size="24px"
             [readonly]="true">
           </star-rating>
-          {{getStars(recentReview)}} / based on {{recentReview.totalReviews}} reviews.
+          <p></p>
         </div>
         <div class="content">
           <p>{{recentReview.content}}</p>

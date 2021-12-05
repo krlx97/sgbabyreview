@@ -55,6 +55,12 @@
   display: flex;
   align-items: center;
 }
+
+.stars p {
+  margin-left:5px;
+  font-size:14px;
+}
+
 .product__img {
   width: 80%;
   height: auto;
@@ -75,9 +81,10 @@
 }
 
 .ratings {
-  padding: 0.7em 0.7em 0 0.7em;
+  padding:2em 25px 0 25px;
   box-sizing: border-box;
 }
+
 .barss {
   margin-bottom: 0.7em;
   display: flex;
@@ -132,6 +139,8 @@
     margin-top:17px;
 }
 
+
+
 .zvezdice {
     margin-top:17px;
     display:flex;
@@ -140,12 +149,6 @@
 
 .zvezdice i {
     margin-left:10px;
-}
-
-.opis p {
-    font-size:14px;
-    line-height: 28px;
-    color:#252525;
 }
 
 .btn--fill {
@@ -159,4 +162,21 @@
   margin:1em 0;
   -webkit-box-shadow: 1px 5px 20px 5px rgba(148, 148, 148, 0.4);
   box-shadow: 1px 5px 20px 5px rgba(148, 148, 148, 0.4);
+}
+
+.sortButton {
+  color:#80CBC4;
+  border:1px solid #80CBC4;
+  font-size:16px;
+  padding:0.5em 1em;
+  border-radius:50px; 
+  background:none;
+}
+
+.sortButton:not(:first-child):not(:last-child) {
+  margin:0 0.5em;
+}
+
+.sort {
+  padding:1em 25px;
 }

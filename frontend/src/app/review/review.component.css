@@ -3,14 +3,25 @@
   width: 64px;
 }
 
+star-rating {
+  margin-top:15px;
+}
+
 .review {
   display:flex;
   flex-direction: column;
   padding: 1.5em;
   background-color: #F6F6F6;
-  border-radius:20px;
-  /* margin-top:200px !important; */
+  border-radius:15px;
+  -webkit-box-shadow: 3px 3px 24px 1px rgba(161, 161, 161, 0.3);
+  box-shadow: 3px 3px 24px 1px rgba(161, 161, 161, 0.3);
+  margin-top:25px !important;
 }
+
+.wrapper {
+  padding:0 25px;
+}
+
 
 .user-info {
   display:flex;
@@ -48,8 +59,8 @@ h3 {
     margin:10px 0;
 }
 
-.zvezdice .fas, .far {
-  font-size:25px;
+i {
+  font-size:20px;
   color:#80CBC4;
 }
 
@@ -60,7 +71,7 @@ h3 {
 
 
 .zvezdice i {
-    margin-left:10px;
+    margin-left:1px;
 }
 
 .zvezdice i:first-child {
@@ -110,4 +121,8 @@ h3 {
 
 .buttons {
   margin-top:15px;
+}
+
+.buttons button:first-child {
+  color:#80CBC4;
 }

@@ -19,3 +19,6 @@ h1 {
     font-family: Nunito;
 }
 
+.wrapper {
+    padding-top:5em !important;
+}

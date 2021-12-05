@@ -1,6 +1,7 @@
-<mat-card *ngIf="review; else isFetching">
 
-  <div class="review">
+
+<div class="wrapper">
+  <div class="review" *ngIf="review; else isFetching">
     <div class="user-info">
       <img class="review__img" src="http://localhost:4100/assets/avatars/{{review.username}}.jpg">
       <div class="username-date">
@@ -16,7 +17,7 @@
       [totalstars]="5"
       checkedcolor="#80CBC4"
       uncheckedcolor="grey"
-      size="24px"
+      size="28px"
       [readonly]="true">
     </star-rating>
 
@@ -25,13 +26,14 @@
     </div>
 
     <div class="buttons">
-      <button><i class="far fa-heart fa-xl"></i> {{review.likes.length}}</button>
-      <button [socialShare]="'fb'"><i class="fas fa-share-alt fa-xl"></i></button>
-      <button><i class="fas fa-flag fa-xl"></i></button>
+      <button><i class="far fa-heart"></i> {{review.likes.length}}</button>
+      <button [socialShare]="'fb'"><i class="fas fa-share-alt"></i></button>
+      <button><i class="fas fa-flag "></i></button>
     </div>
   </div>
+</div>
 
-</mat-card>
+
 
 <ng-template #isFetching>
   Loading...
